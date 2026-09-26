@@ -1,0 +1,23 @@
+{
+  "name": "birchpointswe",
+  "description": "Plugins from Birch Point SWE",
+  "owner": {
+    "name": "Birch Point SWE",
+    "url": "https://birchpointswe.com"
+  },
+  "plugins": [
+    {
+      "name": "office",
+      "source": "./plugins/office",
+      "description": "Turn Cowork into a small staff of agents: one project per area of your work, a shared board, handoffs between projects, and a morning briefing",
+      "version": "0.1.0",
+      "author": {
+        "name": "Birch Point SWE"
+      },
+      "homepage": "https://birchpointswe.com/#office",
+      "repository": "https://github.com/birchpointswe/office",
+      "license": "MIT",
+      "keywords": ["cowork", "agents", "productivity", "email", "briefing"]
+    }
+  ]
+}
