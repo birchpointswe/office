@@ -39,7 +39,14 @@ Start with two or three projects. You can add more later by saying "add a projec
 
 ## Using it
 
-Talk to any project the way you'd talk to an assistant:
+Two words cover most of it:
+
+- **readout**: where everything stands, in the same format every time. It changes
+  nothing.
+- **reconcile**: cleans up one project. It ticks off finished work, adds anything agreed
+  in chat, and flags duplicates and stale items.
+
+Otherwise, talk to any project the way you'd talk to an assistant:
 
 - "What's on my plate?"
 - "Tell Prospecting to follow up with Acme on Friday."
@@ -85,6 +92,8 @@ The agents follow a few rules:
 | `board` | Keeps each project's to-do board |
 | `handoff` | Passes work from one project to another |
 | `briefing` | The Chief of Staff's morning briefing, Friday review and upkeep checks |
+| `readout` | The rundown across every project, in one fixed format |
+| `reconcile` | Makes one project's board and notes true again |
 
 ## Safety
 
