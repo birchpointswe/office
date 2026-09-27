@@ -66,7 +66,14 @@ Write `Office/setup/global-instructions.md` with:
    - "Morning briefing", weekdays at 7:30 in the morning: "Run the morning briefing."
    - "Friday review", Fridays at 3 in the afternoon: "Run the Friday review."
    Use "Automatically approve" for these, since they only read and write the Office folder.
-5. **Voice.** Run the voice skill to build the profile. This is the step users notice most,
+5. **Inbox checks, optional.** By default a project reads its inbox when the user opens
+   it. For a project that should pick up notes on its own, ask how often: every 15
+   minutes, every 30, or only when opened. Cowork's shortest schedule is hourly, so make
+   one hourly task per slot, each starting at a different minute: four tasks at :00, :15,
+   :30 and :45 for every 15 minutes, or two at :00 and :30. Each task's prompt: "Check the
+   inbox and handle any notes." Tell the user that every check uses part of their plan's
+   allowance, so start with one project.
+6. **Voice.** Run the voice skill to build the profile. This is the step users notice most,
    so do it on day one.
 
 Finish by running one real task in one project, start to end, so the user sees a board
