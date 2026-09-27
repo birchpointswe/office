@@ -20,6 +20,7 @@ Change nothing. The readout only reads. Cleanup is the reconcile skill.
 
     Needs you
     - Decisions or replies only the user can give, one line each, with the project.
+      Include every agent's "Questions for me" section.
 
     Due
     - Anything due today, overdue, or due in the next two days, with the date.

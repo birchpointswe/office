@@ -1,88 +1,125 @@
 ---
 name: setup
-description: Set up the user's Office for the first time, or add a new project to it. Use when the user says "set up my office", "add a project", "I want an agent for...", or when the office skill finds no Office folder. Interviews the user, creates the folder, and writes the instructions the user pastes into each Cowork project and into global instructions.
+description: Set up the user's Office, run by the Chief of Staff. Use when the user pastes the onboarding block into a new Chief of Staff project, says "set up my office", or says "next" during setup. Interviews the user, creates the Office folder, then hands out one project at a time, each with a block the user pastes into that project's first chat so the project sets itself up from inside.
 ---
 
 # Setting up the Office
 
-You can create folders and files, but you can't create Cowork projects or change settings.
-So you prepare everything, and the user does a few clicks with you walking them through.
-Go one step at a time and wait for the user between steps.
+The Chief of Staff runs setup. The user created it as a Cowork project on an empty folder,
+and that folder becomes the Office folder. From here the user talks only to the Chief of
+Staff, and goes into another project only to create it and paste one block.
 
-## Interview
+You can create folders and files, but you can't create Cowork projects or change the
+user's settings. For those, give one short instruction and wait.
 
-Ask, one question at a time:
+If this chat isn't in a project named Chief of Staff, stop and tell the user: "Create a
+new Cowork project called Chief of Staff on an empty folder, and paste the onboarding
+block into its first chat."
+
+## 1. Interview
+
+Ask one question at a time:
 
 1. Their name, role and company, and who they mostly deal with.
-2. The areas their work splits into. Suggest two or three at most to start: Office works
-   best when each project has a clear area, and more can come later.
-3. Which tools they use: mail, calendar, documents, CRM. Which ones Claude is connected to,
-   and which ones they'd sign into through the browser instead.
-4. Whether their employer has rules about AI tools and company data. If yes, keep company
+2. The areas their work splits into. Suggest two to four to start. An area is a domain,
+   such as Vendors or Marketing, and one agent can cover several related topics.
+3. Existing Cowork projects they want in the Office. For each, which area it belongs to.
+   Projects that are only topics can fold into one agent, or stay outside the Office.
+4. Whether they'd like person names for the agents, such as Jeff for Vendors. If yes,
+   agree a name for each, and check it doesn't match a real contact.
+5. Whether their employer has rules about AI tools and company data. If yes, keep company
    data out until they've checked.
-5. Where they want the Office folder. Recommend a folder inside OneDrive or Google Drive,
-   so it's backed up and on every device.
 
-## Create the folder
+Then confirm the plan in one short list: each agent's name if any, its area, and whether
+it's new or an existing project.
 
-Create the layout from the office skill: `README.md`, `voice/samples/`, one
-`inbox/<domain>/done/` per project plus `inbox/chief-of-staff/done/`, and one folder per
-project with a starting `board.md` and `notes.md`.
+## 2. Create the Office
 
-Write `README.md` for the user in plain words: what the Office is, that the agents keep
-these files, and that they never need to open them.
+In this project's folder, create:
 
-## Write the instructions
+    README.md                   plain words for the user: what this folder is
+    office.md                   the plan from the interview: user, agents, areas, folders
+    chief-of-staff/board.md
+    chief-of-staff/notes.md     with a State block
+    inbox/chief-of-staff/done/
+    voice/samples/
 
-Write `Office/setup/<domain>.md` for each project, using this template:
+Write the chief of staff's own board and notes now.
 
-    You're the <Domain> agent for <name>, <role> at <company>.
-    Your domain: <two lines on what this project covers and what it doesn't>.
-    The Office folder is at <path>. Use the office skill at the start and end of every
-    task.
-    Draft anything <name> will send in their voice, using the voice skill. Never send it.
+## 3. Global instructions
 
-Write `Office/setup/chief-of-staff.md` the same way, with this domain line: "You have no
-domain of your own. You run the briefing skill, route notes, and check the other
-projects' upkeep."
-
-Write `Office/setup/global-instructions.md` with:
+Give the user this text in one block, and tell them where it goes: in the desktop app,
+the menu, then Claude, then Settings, then Account. If their screen differs, ask them to
+describe it and find the field with them.
 
     I'm <name>, <role> at <company>.
     My Office folder is at <path>. When a task touches my work, use the office skill.
     Never send email, accept or change meetings, delete files or spend money without
     asking me first.
-    Write like me, using the voice skill, and keep it short.
 
-## Walk the user through
+## 4. One project at a time
 
-1. **Global instructions.** In the desktop app: the menu, then Claude, then Settings, then
-   Account. Paste the text from `global-instructions.md`. If the user's app shows a
-   different path, ask them to describe the screen and find the instructions field with
-   them.
-2. **One project per domain.** In the sidebar, click + next to Projects, then "Use an
-   existing folder", and pick `Office/<domain>/`. Paste its instructions from
-   `setup/<domain>.md`. Then add the whole `Office/` folder under Context.
-3. **The Chief of Staff** the same way, on `Office/chief-of-staff/`.
-4. **The schedule.** Inside the Chief of Staff project, create a scheduled task:
-   - "Morning briefing", weekdays at 7:30 in the morning: "Run the morning briefing."
-   - "Friday review", Fridays at 3 in the afternoon: "Run the Friday review."
-   Use "Automatically approve" for these, since they only read and write the Office folder.
-5. **Inbox checks, optional.** By default a project reads its inbox when the user opens
-   it. For a project that should pick up notes on its own, ask how often: every 15
-   minutes, every 30, or only when opened. Cowork's shortest schedule is hourly, so make
-   one hourly task per slot, each starting at a different minute: four tasks at :00, :15,
-   :30 and :45 for every 15 minutes, or two at :00 and :30. Each task's prompt: "Check the
-   inbox and handle any notes." Tell the user that every check uses part of their plan's
-   allowance, so start with one project.
-6. **Voice.** Run the voice skill to build the profile. This is the step users notice most,
-   so do it on day one.
+For each agent in the plan, in order:
 
-Finish by running one real task in one project, start to end, so the user sees a board
-update and a note land.
+**A new project.** Tell the user, in two lines:
 
-## Adding a project later
+    Create a project called "<Name> (<Area>)" with "Use an existing folder", and pick
+    the Office folder: <path>. Then paste this into its first chat:
 
-Run the same interview question 2 for the new area, then create its folders, its setup
-file and its inbox. Walk the user through step 2 for that project only, and add a line to
-each existing project's notes saying the new project exists and what it covers.
+Then the project block, in one copyable block:
+
+    You're <Name>, the <Area> agent in my Office. The Office folder is this project's
+    folder. Use the office skill for everything.
+    Your area: <two lines on what this agent covers and what it doesn't>.
+    Set yourself up now:
+    1. Create <area>/board.md, <area>/notes.md with a State block, and
+       inbox/<area>/done/.
+    2. Give me one block to paste into this project's instructions field.
+    3. Schedule an hourly task, 7am to 7pm, with the prompt "Run the scheduled
+       reconcile." If you can't create it yourself, tell me the clicks.
+    4. Drop a note in inbox/chief-of-staff/ saying you're set up and what you own.
+    5. Tell me to go back to the Chief of Staff and say "next".
+
+**An existing project.** The project keeps its own folder, so it needs the Office folder
+added as context. Tell the user:
+
+    Open your "<existing name>" project, add the Office folder (<path>) under its
+    Context, and rename it "<Name> (<Area>)" if you like. Then paste this into a new
+    chat in it:
+
+Then the same block, with two changes: "The Office folder is at <path>" in place of
+"this project's folder", and step 1 adds "Fill the board and notes from what you already
+know about this project."
+
+**Then wait.** When the user says "next", read `inbox/chief-of-staff/`. If the project's
+note is there and its board and notes exist, move the note to `done/`, record the agent
+in `office.md`, and go to the next agent. If not, say what's missing and help the user
+finish it.
+
+## 5. The Chief of Staff's schedules
+
+When every agent is set up, create these in this project, or give the clicks:
+
+- "Morning briefing", weekdays at 7:30: "Run the morning briefing."
+- "Friday review", Fridays at 3pm: "Run the Friday review."
+- "Scheduled reconcile", hourly, 7am to 7pm: "Run the scheduled reconcile."
+
+Use "Automatically approve" for all of them, since they only read and write the Office
+folder.
+
+If a schedule can't be limited to 7am to 7pm, create it hourly anyway. The reconcile
+skill stops at once outside those hours.
+
+## 6. Voice
+
+Run the voice skill to build the user's voice profile, so drafts sound like them.
+
+## 7. Finish
+
+Run a readout, so the user sees every agent in one place. Then run the checkup skill,
+and fix anything it finds.
+
+## Adding an agent later
+
+The user says "add an agent" to the Chief of Staff. Ask questions 2 and 4 for the new
+area, add it to `office.md`, and run step 4 for that one agent.

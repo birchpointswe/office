@@ -17,15 +17,26 @@ open, edit or move a file.
 
     Office/
       README.md               a plain-words note for the user, written at setup
+      office.md               the plan: the user, each agent, its name, area and folder
       voice/                  samples of the user's writing and their voice profile
       inbox/<domain>/         notes addressed to each project
       inbox/<domain>/done/    notes already handled
       <domain>/board.md       each project's to-do board
       <domain>/notes.md       each project's memory, with a State block on top
-      chief-of-staff/         the daily briefings
+      chief-of-staff/         its board and notes, and the daily briefings
+
+Most projects use the Office folder itself as their project folder. An existing project
+that joined later keeps its own folder and has the Office folder added as context.
 
 Your project's instructions name your domain and where the Office folder is. If they
-don't, stop and tell the user, because nothing below works without it.
+don't, check `office.md`. If you still can't tell, stop and tell the user, because nothing
+below works without it.
+
+An agent may have a person's name, such as Jeff for Vendors. Answer to it. Folders and
+inboxes always use the area name, so a rename never moves anything.
+
+The board is the file `board.md`. It isn't your built-in to-do list, which has no
+Waiting group. Never keep Office work in the built-in list.
 
 ## The rules
 
@@ -72,6 +83,15 @@ reports any project that skipped it.
 
     ## Acme renewal
     Decisions, contacts and history, under one heading per topic.
+
+    ## Done
+    - 2026-09-28: Pricing sheet for Beta Corp
+
+    ## Questions for me
+    - 2026-09-29: Is the renewal deck done? It's been in Now for a week.
+
+The scheduled reconcile saves questions under Questions for me, since nobody is there to
+answer. A reconcile by hand asks them and clears the section.
 
 Keep the State block short enough to read in ten seconds. It's the first thing the next
 task reads, and often the only thing.

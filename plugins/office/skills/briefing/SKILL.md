@@ -34,7 +34,8 @@ Write `Office/chief-of-staff/briefing-<date>.md`, short enough to read in two mi
     Anything from the checks below.
 
     ## Questions for you
-    Decisions only the user can make, one line each.
+    Decisions only the user can make, one line each. Include every agent's
+    "Questions for me" section, with the agent's name.
 
 Leave out any section with nothing in it. Then tell the user the briefing is ready, with
 the Burning section in the message itself.
@@ -45,7 +46,8 @@ Run these every briefing. Agents skip their end-of-task upkeep, and nothing else
 it.
 
 - A project whose `notes.md` Updated date is older than its latest board change or its
-  latest handled note. Name the project, and say its notes are out of date.
+  latest handled note, or older than the last working day. Name the project, and say its
+  scheduled reconcile may not be running.
 - The same item on two boards, or on a board and in the user's own to-do list. Name both
   places, and ask the user which one owns it.
 - A note sitting in any inbox for more than two working days. Name the project that

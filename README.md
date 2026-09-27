@@ -40,16 +40,25 @@ computer is on.
 
 ## First run
 
-Start a Cowork task and type "set up my office". The setup skill then:
+1. Make an empty folder for your Office, somewhere backed up.
+2. In Cowork, create a project called **Chief of Staff**. Choose "Use an existing folder"
+   and pick that folder.
+3. Paste this into its first chat:
 
-- asks about you, your role and the areas your work splits into
-- creates the Office folder
-- writes the text for your global instructions and for each project
-- walks you through creating the projects and the Chief of Staff's schedule, one click
-  at a time
-- learns how you write from your sent mail
+       You're my Chief of Staff. Run the office setup skill.
 
-Start with two or three projects. You can add more later by saying "add a project".
+From there, the Chief of Staff walks you through everything:
+
+- it asks about you and the areas your work splits into, and which of your existing
+  projects should join
+- it creates the Office folder's contents
+- for each agent, it tells you to create one project and gives you a block to paste into
+  that project's first chat, and the project sets itself up
+- you come back to the Chief of Staff and say "next"
+- it sets up the schedules, and learns how you write from your sent mail
+
+Start with two to four agents. You can add more later by telling the Chief of Staff "add
+an agent". To check everything is set up properly, say "check my office".
 
 ## Using it
 
@@ -58,7 +67,9 @@ Two words cover most of it:
 - **readout**: where everything stands, in the same format every time. It changes
   nothing.
 - **reconcile**: cleans up one project. It ticks off finished work, adds anything agreed
-  in chat, and flags duplicates and stale items.
+  in chat, and flags duplicates and stale items. Each project also reconciles itself
+  every hour from 7am to 7pm, and saves any questions for you until you next say
+  "reconcile" or read the briefing.
 
 Otherwise, talk to any project the way you'd talk to an assistant:
 
@@ -73,16 +84,17 @@ at 3 it writes a review of the week.
 
 ## How it works
 
-Each project is one agent with one domain, such as Accounts, Prospecting or Admin. A
-project keeps its own instructions and memory, so it remembers its area between tasks.
+Each project is one agent with one domain, such as Accounts, Prospecting or Admin. You
+can give agents names, like Jeff for Vendors. A project keeps its own instructions and
+memory, so it remembers its area between tasks.
 
 The projects share one folder:
 
 | Path | Holds |
 |---|---|
 | `Office/README.md` | a plain-words note about the folder, for you |
+| `Office/office.md` | the plan: you, each agent, its name and area |
 | `Office/voice/` | samples of your writing, and your voice profile |
-| `Office/setup/` | the instructions pasted into each project, kept for reference |
 | `Office/inbox/<project>/` | notes one project sends another |
 | `Office/<project>/board.md` | the project's to-do board: Now, Next and Waiting |
 | `Office/<project>/notes.md` | the project's memory, with a short status block on top |
@@ -101,7 +113,8 @@ The agents follow a few rules:
 | Skill | What it does |
 |---|---|
 | `office` | How each project works as one agent: the Office folder, the rules, and what to do at the start and end of every task |
-| `setup` | Interviews you, creates the Office folder, and walks you through creating the projects |
+| `setup` | Run by the Chief of Staff: interviews you, creates the Office folder, and hands out one project at a time |
+| `checkup` | Checks the whole setup and fixes gaps. Also adds, renames or retires agents |
 | `voice` | Learns how you write from your sent mail, and drafts in your voice |
 | `board` | Keeps each project's to-do board |
 | `handoff` | Passes work from one project to another |

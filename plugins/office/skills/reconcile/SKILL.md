@@ -1,49 +1,70 @@
 ---
 name: reconcile
-description: Make this project's board and notes true again. Use when the user types /reconcile or says "reconcile", "clean up", "tidy the board" or "bring things up to date", and when a readout or briefing flags upkeep for this project. Marks finished work done, captures work that only exists in chat, refreshes the State block, finds duplicates and stale items, and handles the inbox.
+description: Make this agent's board and notes true again. Use when the user types /reconcile or says "reconcile", "clean up", "tidy the board" or "bring things up to date", when a readout or briefing flags upkeep for this agent, and on every scheduled reconcile run. Handles the inbox, marks finished work done, captures work that only exists in chat, refreshes the State block, and finds duplicates and stale items.
 ---
 
 # Reconcile
 
 A board drifts: work gets finished and never ticked, new work gets agreed in chat and never
-written down, and the State block goes stale. Reconcile fixes that for one project. Run it
-in the project that needs it.
+written down, and the State block goes stale. Reconcile fixes that for one agent. It runs
+two ways:
 
-This project edits only its own board and notes. Anything that belongs to another project
-goes there as a handoff note.
+- **Scheduled**, every hour from 7am to 7pm. Nobody is there to answer, so it asks nothing.
+- **By hand**, when the user says "reconcile". The user is there, so it asks, and it
+  clears the questions the scheduled runs saved up.
 
-## Steps
+This agent edits only its own board and notes. Anything that belongs to another agent goes
+there as a handoff note.
 
-1. **Inbox.** Handle every note in `Office/inbox/<your domain>/`, as the handoff skill
-   says.
-2. **Finished work.** For each item on the board, check this project's recent tasks and
-   notes. If it looks done, ask the user once, with all such items in one list. Move the
-   confirmed ones to the Done section of `notes.md` with today's date.
-3. **Work only in chat.** Look through this project's recent tasks for commitments,
-   follow-ups and deadlines that never reached the board. List them for the user, and add
-   the ones they confirm.
-4. **Duplicates.** Compare the board with every other project's board, and with the user's
-   own to-do list if they keep one. For each item in two places, ask the user which one
-   owns it. Remove it from this board, or send a handoff note asking the other project to
-   remove it.
-5. **Stale items.** Flag Waiting items with no name or no date, and items nobody touched
-   in two weeks. Ask the user: keep, change, or drop.
-6. **State.** Rewrite the State block at the top of `notes.md`: goal, next step, what it's
-   waiting on, and anything to watch out for. Set Updated to today.
-7. **Board.** Set the board's Updated date to today.
+## Scheduled run
 
-## Report
+If the time is before 7am or after 7pm, stop at once and do nothing.
+
+1. **Inbox.** Handle every note in your inbox, as the handoff skill says. A note that needs
+   the user's answer goes under Questions for me.
+2. **Handoffs out.** If work on your board needs another agent, send it a note.
+3. **Duplicates and stale items.** Compare your board with the other agents' boards. Add
+   anything that needs a decision under Questions for me.
+4. **State.** Rewrite the State block, and set Updated to now.
+
+Never mark an item done in a scheduled run, since only the user can confirm it. Never
+send email or change anything outside the Office folder.
+
+Keep a section at the end of `notes.md`:
+
+    ## Questions for me
+    - 2026-09-29: Is the Acme renewal deck done? It's been in Now for a week.
+
+The morning briefing and every readout show these.
+
+## By hand
+
+1. **Inbox.** Handle every note in your inbox.
+2. **Questions for me.** Ask the saved questions, all in one list. Apply the answers and
+   clear the section.
+3. **Finished work.** For each item on the board, check your recent tasks and notes. Ask
+   about the ones that look done, in one list. Move the confirmed ones to the Done section
+   of `notes.md` with today's date.
+4. **Work only in chat.** Look through recent tasks for commitments, follow-ups and
+   deadlines that never reached the board. List them, and add the ones the user confirms.
+5. **Duplicates.** Compare the board with every other agent's board, and with the user's
+   own to-do list if they keep one. For each item in two places, ask which one owns it.
+   Remove it from your board, or send a note asking the other agent to remove it.
+6. **Stale items.** Flag Waiting items with no name or no date, and items nobody touched
+   in two weeks. Ask: keep, change, or drop.
+7. **State and board.** Rewrite the State block, and set both Updated dates to today.
 
 Finish with a short summary in chat:
 
-    Reconciled <Project>
+    Reconciled <Name>
     - Done: items moved to Done
     - Added: items captured from chat
     - Removed or handed off: duplicates and dropped items, and where they went
     - Still open: questions the user didn't answer
 
-## From the Chief of Staff
+## In the Chief of Staff
 
-If the user runs reconcile in the Chief of Staff, it can't edit other projects. Instead,
-run the readout's checks across every project, and send each project with problems one
-handoff note that lists them. Then tell the user which projects to open and reconcile.
+The Chief of Staff can't edit other agents. By hand or scheduled, it runs its own steps,
+then checks every agent: notes whose Updated date is more than two hours old during the
+day, and inbox notes older than two working days. It sends each agent with problems one
+handoff note that lists them, and tells the user which agents to open.

@@ -7,6 +7,10 @@ description: Keep this project's to-do board in the Office. Use when the user ad
 
 Each project has one board at `Office/<domain>/board.md`. Only this project edits it.
 
+The board is always this file. It isn't your built-in to-do list, which has no Waiting
+group. Read and edit `board.md` directly, and never move Office work into the built-in
+list.
+
     # Accounts board
     Updated: 2026-09-29
 
