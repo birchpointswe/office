@@ -1,6 +1,6 @@
 ---
 name: checkup
-description: Check that the user's Office is set up properly, and change its setup. Use when the user says "check my office", "checkup", "is everything set up", "reconfigure", or wants to add, rename or retire an agent, or change how often reconcile runs. Run in the Chief of Staff. Verifies every agent's files, instructions and schedules, then walks the user through each gap.
+description: Check that the user's Office is set up properly, and change its setup. Use when the user says "check my office", "checkup", "is everything set up", "reconfigure", or wants to add, split, rename or retire an agent, or change how often reconcile runs. Run in the Chief of Staff. Verifies every agent's files, instructions and schedules, then walks the user through each gap.
 ---
 
 # Checkup
@@ -50,6 +50,7 @@ instruction.
 ## Change the setup
 
 - **Add an agent:** the setup skill's "Adding an agent later".
+- **Split an agent:** the setup skill's "Splitting an agent".
 - **Rename an agent:** the user renames the project in the sidebar. Update the name in
   `office.md`, and send the agent a note so it updates its own notes. Folders keep their
   area names, so nothing moves.

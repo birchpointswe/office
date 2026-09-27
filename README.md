@@ -50,16 +50,19 @@ computer is on.
 
 From there, the Chief of Staff walks you through everything:
 
+- it gives you its own instructions to paste, and sets up its hourly reconcile
 - it asks about you and the areas your work splits into, and which of your existing
   projects should join
 - it creates the Office folder's contents
 - for each agent, it tells you to create one project and gives you a block to paste into
-  that project's first chat, and the project sets itself up
+  that project's first chat. The project gives you its instructions to paste, sets up its
+  own hourly reconcile, and creates its files
 - you come back to the Chief of Staff and say "next"
-- it sets up the schedules, and learns how you write from your sent mail
+- it learns how you write from your sent mail
 
-Start with two to four agents. You can add more later by telling the Chief of Staff "add
-an agent". To check everything is set up properly, say "check my office".
+Start with two to four agents. Adding or splitting an agent later works the same way:
+tell the Chief of Staff "add an agent" or "split <name>", create the project, and paste
+the block. To check everything is set up properly, say "check my office".
 
 ## Using it
 

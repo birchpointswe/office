@@ -16,7 +16,27 @@ If this chat isn't in a project named Chief of Staff, stop and tell the user: "C
 new Cowork project called Chief of Staff on an empty folder, and paste the onboarding
 block into its first chat."
 
-## 1. Interview
+Every agent's setup starts the same way: its instructions, then its hourly reconcile. The
+Chief of Staff goes first.
+
+## 1. The Chief of Staff's instructions and schedule
+
+Give the user this block to paste into this project's instructions field:
+
+    You're my Chief of Staff. The Office folder is this project's folder. Use the office
+    skill for everything. You run setup and checkup, route notes nobody placed, and
+    flag agents that fall behind.
+
+Then create one scheduled task in this project, or give the clicks: "Scheduled
+reconcile", hourly, 7am to 7pm, with the prompt "Run the scheduled reconcile." It's the
+only scheduled job in the Office, and every agent gets the same one. Use "Automatically
+approve", since it only reads and writes the Office folder. If a schedule can't be
+limited to 7am to 7pm, create it hourly anyway. The reconcile skill stops at once outside
+those hours.
+
+Wait until the user confirms both, then start the interview.
+
+## 2. Interview
 
 Ask one question at a time:
 
@@ -33,7 +53,7 @@ Ask one question at a time:
 Then confirm the plan in one short list: each agent's name if any, its area, and whether
 it's new or an existing project.
 
-## 2. Create the Office
+## 3. Create the Office
 
 In this project's folder, create:
 
@@ -46,7 +66,7 @@ In this project's folder, create:
 
 Write the chief of staff's own board and notes now.
 
-## 3. Global instructions
+## 4. Global instructions
 
 Give the user this text in one block, and tell them where it goes: in the desktop app,
 the menu, then Claude, then Settings, then Account. If their screen differs, ask them to
@@ -57,9 +77,11 @@ describe it and find the field with them.
     Never send email, accept or change meetings, delete files or spend money without
     asking me first.
 
-## 4. One project at a time
+## 5. One project at a time
 
-For each agent in the plan, in order:
+Every new agent, now or later, follows the same flow: the user creates a project, pastes
+one block into its first chat, and does what that project tells them. For each agent in
+the plan, in order:
 
 **A new project.** Tell the user, in two lines:
 
@@ -72,11 +94,11 @@ Then the project block, in one copyable block:
     folder. Use the office skill for everything.
     Your area: <two lines on what this agent covers and what it doesn't>.
     Set yourself up now:
-    1. Create <area>/board.md, <area>/notes.md with a State block, and
-       inbox/<area>/done/.
-    2. Give me one block to paste into this project's instructions field.
-    3. Schedule an hourly task, 7am to 7pm, with the prompt "Run the scheduled
+    1. Give me one block to paste into this project's instructions field.
+    2. Schedule an hourly task, 7am to 7pm, with the prompt "Run the scheduled
        reconcile." If you can't create it yourself, tell me the clicks.
+    3. Create <area>/board.md, <area>/notes.md with a State block, and
+       inbox/<area>/done/.
     4. Drop a note in inbox/chief-of-staff/ saying you're set up and what you own.
     5. Tell me to go back to the Chief of Staff and say "next".
 
@@ -88,23 +110,13 @@ added as context. Tell the user:
     chat in it:
 
 Then the same block, with two changes: "The Office folder is at <path>" in place of
-"this project's folder", and step 1 adds "Fill the board and notes from what you already
+"this project's folder", and step 3 adds "Fill the board and notes from what you already
 know about this project."
 
 **Then wait.** When the user says "next", read `inbox/chief-of-staff/`. If the project's
 note is there and its board and notes exist, move the note to `done/`, record the agent
 in `office.md`, and go to the next agent. If not, say what's missing and help the user
 finish it.
-
-## 5. The Chief of Staff's schedule
-
-When every agent is set up, create one scheduled task in this project, or give the
-clicks: "Scheduled reconcile", hourly, 7am to 7pm, with the prompt "Run the scheduled
-reconcile." It's the only scheduled job in the Office, and every agent has the same one.
-
-Use "Automatically approve", since it only reads and writes the Office folder. If a
-schedule can't be limited to 7am to 7pm, create it hourly anyway. The reconcile skill
-stops at once outside those hours.
 
 ## 6. Voice
 
@@ -117,5 +129,12 @@ and fix anything it finds.
 
 ## Adding an agent later
 
-The user says "add an agent" to the Chief of Staff. Ask questions 2 and 4 for the new
-area, add it to `office.md`, and run step 4 for that one agent.
+The user says "add an agent" to the Chief of Staff. Ask interview questions 2 and 4 for
+the new area, add it to `office.md`, and run step 5 for that one agent.
+
+## Splitting an agent
+
+The user says "split <Name>", or an agent's board has grown two areas. Agree the new area
+and name with the user, add it to `office.md`, and run step 5 for the new agent. Then
+send the old agent a handoff note that lists the items moving to the new agent. The old
+agent moves them on its next reconcile, since only an agent edits its own board.
