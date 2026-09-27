@@ -104,10 +104,6 @@ The agents follow a few rules:
 Remove the plugin under Customize, then Plugins. The Office folder is plain files, and it
 stays where it is until you delete it.
 
-## Help
-
-Setup sessions and coaching: [birchpointswe.com](https://birchpointswe.com/#office).
-
 ## License
 
 MIT. See `LICENSE`.
