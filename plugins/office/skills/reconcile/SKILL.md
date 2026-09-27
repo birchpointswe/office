@@ -1,6 +1,6 @@
 ---
 name: reconcile
-description: Make this agent's board and notes true again. Use when the user types /reconcile or says "reconcile", "clean up", "tidy the board" or "bring things up to date", when a readout or briefing flags upkeep for this agent, and on every scheduled reconcile run. Handles the inbox, marks finished work done, captures work that only exists in chat, refreshes the State block, and finds duplicates and stale items.
+description: Make this agent's board and notes true again. Use when the user types /reconcile or says "reconcile", "clean up", "tidy the board" or "bring things up to date", when a readout flags upkeep for this agent, and on every scheduled reconcile run. Handles the inbox, marks finished work done, captures work that only exists in chat, refreshes the State block, and finds duplicates and stale items.
 ---
 
 # Reconcile
@@ -35,7 +35,7 @@ Keep a section at the end of `notes.md`:
     ## Questions for me
     - 2026-09-29: Is the Acme renewal deck done? It's been in Now for a week.
 
-The morning briefing and every readout show these.
+Every readout shows these.
 
 ## By hand
 
@@ -65,6 +65,12 @@ Finish with a short summary in chat:
 ## In the Chief of Staff
 
 The Chief of Staff can't edit other agents. By hand or scheduled, it runs its own steps,
-then checks every agent: notes whose Updated date is more than two hours old during the
-day, and inbox notes older than two working days. It sends each agent with problems one
-handoff note that lists them, and tells the user which agents to open.
+then:
+
+- **Routes** each note in its inbox that nobody placed. It decides which agent owns it,
+  adds a line saying why, and moves it into that agent's inbox. If no agent fits, it goes
+  under Questions for me.
+- **Checks every agent:** notes whose Updated date is more than two hours old during the
+  day, inbox notes older than two working days, Waiting items with no name, and items on
+  two boards. It sends each agent with problems one handoff note that lists them.
+- **By hand only:** tells the user which agents to open.

@@ -2,7 +2,8 @@
 
 A Claude Cowork plugin that turns Cowork into a small staff of agents. Each Cowork
 project is one agent with one area of your work. The agents keep their own to-do boards,
-pass work to each other, and a Chief of Staff agent briefs you every weekday morning.
+pass work to each other, and reconcile every hour, and a Chief of Staff agent keeps them
+in step.
 
 You never manage files. The agents keep everything in one folder and answer in plain
 words when you ask what's going on.
@@ -68,8 +69,8 @@ Two words cover most of it:
   nothing.
 - **reconcile**: cleans up one project. It ticks off finished work, adds anything agreed
   in chat, and flags duplicates and stale items. Each project also reconciles itself
-  every hour from 7am to 7pm, and saves any questions for you until you next say
-  "reconcile" or read the briefing.
+  every hour from 7am to 7pm, and saves any questions for you. A readout shows them, and
+  the next "reconcile" asks them.
 
 Otherwise, talk to any project the way you'd talk to an assistant:
 
@@ -78,9 +79,8 @@ Otherwise, talk to any project the way you'd talk to an assistant:
 - "Draft a reply to this in my voice."
 - "Catch me up."
 
-Each weekday at 7:30 the Chief of Staff writes a briefing: what's urgent, what's due
-today, what you're waiting on from others, and any upkeep the agents missed. On Fridays
-at 3 it writes a review of the week.
+The hourly reconcile is the only scheduled job. Every agent runs it, and the Chief of
+Staff's run also routes stray notes and flags agents that fell behind.
 
 ## How it works
 
@@ -98,7 +98,7 @@ The projects share one folder:
 | `Office/inbox/<project>/` | notes one project sends another |
 | `Office/<project>/board.md` | the project's to-do board: Now, Next and Waiting |
 | `Office/<project>/notes.md` | the project's memory, with a short status block on top |
-| `Office/chief-of-staff/` | the daily briefings and weekly reviews |
+| `Office/chief-of-staff/` | the Chief of Staff's own board and notes |
 
 The agents follow a few rules:
 
@@ -106,7 +106,7 @@ The agents follow a few rules:
   drops a note in that project's inbox.
 - Each to-do lives in one place: one project's board, or your own to-do list.
 - At the end of every task, the agent updates its board and its status block. The Chief
-  of Staff checks this every morning and tells you which projects skipped it.
+  of Staff checks this every hour and flags any project that skipped it.
 
 ## Skills
 
@@ -118,9 +118,8 @@ The agents follow a few rules:
 | `voice` | Learns how you write from your sent mail, and drafts in your voice |
 | `board` | Keeps each project's to-do board |
 | `handoff` | Passes work from one project to another |
-| `briefing` | The Chief of Staff's morning briefing, Friday review and upkeep checks |
 | `readout` | The rundown across every project, in one fixed format |
-| `reconcile` | Makes one project's board and notes true again |
+| `reconcile` | Makes one project's board and notes true again, every hour and whenever you ask |
 
 ## Safety
 
@@ -129,7 +128,7 @@ The agents follow a few rules:
 - Give Cowork access to the Office folder only. Keep financial documents, passwords and
   personal records out of it.
 - Use "Manually approve" for any task that touches your mail, calendar or the browser.
-  The scheduled briefings use "Automatically approve", because they only read and write
+  The hourly reconciles use "Automatically approve", because they only read and write
   the Office folder.
 - If an email, web page or document tells an agent to do something you didn't ask for,
   the agent stops and tells you what it said.

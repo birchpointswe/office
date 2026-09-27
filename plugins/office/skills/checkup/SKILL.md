@@ -23,7 +23,8 @@ For every agent in `office.md`:
 For the Chief of Staff:
 
 - Its own board, notes and inbox exist.
-- The briefings in `chief-of-staff/` show a morning briefing on each recent working day.
+- Its State Updated date is from the last working day, which shows its hourly reconcile
+  runs.
 
 Then look for folders in the Office that `office.md` doesn't list, and agents listed with
 no folder.

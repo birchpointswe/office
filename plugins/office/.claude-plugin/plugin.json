@@ -2,7 +2,7 @@
   "name": "office",
   "displayName": "Office",
   "version": "0.2.0",
-  "description": "Turn Cowork into a small staff of agents: one project per area of your work, a shared board, handoffs between projects, and a morning briefing",
+  "description": "Turn Cowork into a small staff of agents: one project per area of your work, a shared board, handoffs between projects, and an hourly reconcile",
   "author": {
     "name": "Birch Point SWE",
     "url": "https://birchpointswe.com"
@@ -10,5 +10,11 @@
   "homepage": "https://github.com/birchpointswe/office",
   "repository": "https://github.com/birchpointswe/office",
   "license": "MIT",
-  "keywords": ["cowork", "agents", "productivity", "email", "briefing"]
+  "keywords": [
+    "cowork",
+    "agents",
+    "productivity",
+    "email",
+    "reconcile"
+  ]
 }

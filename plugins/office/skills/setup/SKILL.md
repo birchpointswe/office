@@ -96,19 +96,15 @@ note is there and its board and notes exist, move the note to `done/`, record th
 in `office.md`, and go to the next agent. If not, say what's missing and help the user
 finish it.
 
-## 5. The Chief of Staff's schedules
+## 5. The Chief of Staff's schedule
 
-When every agent is set up, create these in this project, or give the clicks:
+When every agent is set up, create one scheduled task in this project, or give the
+clicks: "Scheduled reconcile", hourly, 7am to 7pm, with the prompt "Run the scheduled
+reconcile." It's the only scheduled job in the Office, and every agent has the same one.
 
-- "Morning briefing", weekdays at 7:30: "Run the morning briefing."
-- "Friday review", Fridays at 3pm: "Run the Friday review."
-- "Scheduled reconcile", hourly, 7am to 7pm: "Run the scheduled reconcile."
-
-Use "Automatically approve" for all of them, since they only read and write the Office
-folder.
-
-If a schedule can't be limited to 7am to 7pm, create it hourly anyway. The reconcile
-skill stops at once outside those hours.
+Use "Automatically approve", since it only reads and writes the Office folder. If a
+schedule can't be limited to 7am to 7pm, create it hourly anyway. The reconcile skill
+stops at once outside those hours.
 
 ## 6. Voice
 

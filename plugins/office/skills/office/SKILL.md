@@ -23,7 +23,7 @@ open, edit or move a file.
       inbox/<domain>/done/    notes already handled
       <domain>/board.md       each project's to-do board
       <domain>/notes.md       each project's memory, with a State block on top
-      chief-of-staff/         its board and notes, and the daily briefings
+      chief-of-staff/         its board and notes
 
 Most projects use the Office folder itself as their project folder. An existing project
 that joined later keeps its own folder and has the Office folder added as context.
@@ -62,8 +62,8 @@ Waiting group. Never keep Office work in the built-in list.
 
 ## Before the task ends
 
-Do this every time, even for a quick task. The Chief of Staff checks it every morning and
-reports any project that skipped it.
+Do this every time, even for a quick task. The Chief of Staff checks it on every hourly
+reconcile and flags any project that skipped it.
 
 1. Update `board.md` (board skill).
 2. Update the State block at the top of `notes.md`, and set its Updated date to today.

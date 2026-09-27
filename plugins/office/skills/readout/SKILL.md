@@ -12,7 +12,6 @@ in the same order, so the user learns where to look. Run it from any project.
 
 1. Every project's `board.md`, and the State block at the top of its `notes.md`.
 2. Every inbox under `Office/inbox/`.
-3. The latest briefing in `Office/chief-of-staff/`, if it's from today.
 
 Change nothing. The readout only reads. Cleanup is the reconcile skill.
 
