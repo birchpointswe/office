@@ -56,8 +56,10 @@ Write `Office/setup/global-instructions.md` with:
 
 ## Walk the user through
 
-1. **Global instructions.** Settings, then Cowork, then Global instructions. Paste the text
-   from `global-instructions.md`.
+1. **Global instructions.** In the desktop app: the menu, then Claude, then Settings, then
+   Account. Paste the text from `global-instructions.md`. If the user's app shows a
+   different path, ask them to describe the screen and find the instructions field with
+   them.
 2. **One project per domain.** In the sidebar, click + next to Projects, then "Use an
    existing folder", and pick `Office/<domain>/`. Paste its instructions from
    `setup/<domain>.md`. Then add the whole `Office/` folder under Context.
