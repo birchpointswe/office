@@ -27,7 +27,9 @@ permanent fact, move it there with the date it was verified.
 2. **Handoffs out.** If work on your board needs another agent, send it a note.
 3. **Duplicates and stale items.** Compare your board with the other agents' boards. Add
    anything that needs a decision under Questions for me.
-4. **State.** Rewrite the State block, and set Updated to now.
+4. **Unblocked Waiting items.** If a Waiting item's blocker has landed (the note arrived,
+   or the other agent's Done section shows it), move the item back to Now or Next.
+5. **State.** Rewrite the State block, and set Updated to now.
 
 Never mark an item done in a scheduled run, since only the user can confirm it. Never
 send email or change anything outside the Office folder.
@@ -46,15 +48,16 @@ Every readout shows these.
 2. **Questions for me.** Ask the saved questions, all in one list. Apply the answers and
    clear the section.
 3. **Finished work.** For each item on the board, check your recent tasks, your notes
-   and the files the work produced. Ask about the ones that look done, in one list. Move the confirmed ones to the Done section
-   of `notes.md` with today's date.
+   and the files the work produced. Ask about the ones that look done, in one list. Move
+   the confirmed ones to the Done section of `notes.md` with today's date.
 4. **Work only in chat.** Look through recent tasks for commitments, follow-ups and
    deadlines that never reached the board. List them, and add the ones the user confirms.
 5. **Duplicates.** Compare the board with every other agent's board, and with the user's
    own to-do list if they keep one. For each item in two places, ask which one owns it.
    Remove it from your board, or send a note asking the other agent to remove it.
 6. **Stale items.** Flag Waiting items with no name or no date, and items nobody touched
-   in two weeks. Ask: keep, change, or drop.
+   in two weeks. Ask: keep, change, or drop. Move any Waiting item whose blocker has
+   landed back to Now or Next.
 7. **State and board.** Rewrite the State block, and set both Updated dates to today.
 
 Finish with a short summary in chat:
@@ -71,9 +74,10 @@ The Chief of Staff can't edit other agents. By hand or scheduled, it runs its ow
 then:
 
 - **Routes** each note in its inbox that nobody placed. It decides which agent owns it,
-  adds a line saying why, and moves it into that agent's inbox. If no agent fits, it goes
-  under Questions for me.
+  adds a line saying why, moves it into that agent's inbox, then tells the user where it
+  went. It asks the user only when no agent fits.
 - **Checks every agent:** notes whose Updated date is more than four hours old during the
-  day, inbox notes older than two working days, Waiting items with no name, and items on
-  two boards. It sends each agent with problems one handoff note that lists them.
+  day, State older than the board's last change, inbox notes older than two working
+  days, handoffs no agent handled, Waiting items with no name, Waiting items whose
+  blocker has landed, and items on two boards. It sends each agent with problems one handoff note that lists them.
 - **By hand only:** tells the user which agents to open.
