@@ -46,11 +46,21 @@ Remove every one of these unless the profile shows the user writes that way.
 
 - Opening with "I hope this email finds you well" or "I wanted to reach out".
 - Restating what the other person said before answering it.
-- "Delve", "leverage", "seamless", "robust", "crucial", "navigate", "foster".
+- A sentence that only repeats the one before it in other words: "That's why timing
+  matters here."
+- Saying something is important instead of saying what happens if it goes wrong: "It's
+  worth noting that", "This is key".
+- Puffed-up words: "delve", "leverage", "seamless", "robust", "crucial", "navigate",
+  "foster", "pivotal", "comprehensive", "showcase", "landscape".
+- "Serves as" or "functions as" where "is" would do.
 - Lists of exactly three things, added for rhythm.
-- "It's not just X, it's Y."
+- Counting a list before giving it: "Two things to flag".
+- "It's not just X, it's Y", or "X, not Y" when nobody said Y.
+- Stacked hedges: "generally", "typically", "it could be argued". One hedge that says
+  what's uncertain is fine.
+- Bold labels at the start of every bullet.
 - A closing line that sums up the email: "Looking forward to hearing your thoughts on
   the above."
-- Every paragraph the same length.
+- Every paragraph, or every bullet, the same length.
 - Em dashes, if the user doesn't use them. Most people don't.
 - More enthusiasm than the user ever shows.

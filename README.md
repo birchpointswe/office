@@ -121,6 +121,7 @@ The agents follow a few rules:
 | `office` | How each project works as one agent: the Office folder, the rules, and what to do at the start and end of every task |
 | `setup` | Run by the Chief of Staff: interviews you, creates the Office folder, and hands out one project at a time |
 | `checkup` | Checks the whole setup and fixes gaps. Also adds, renames or retires agents |
+| `retro` | Run in the Chief of Staff after a big project or a rough week: finds what went wrong and why, and turns each lesson into a lasting change |
 | `voice` | Learns how you write from your sent mail, and drafts in your voice |
 | `board` | Keeps each project's to-do board |
 | `handoff` | Passes work from one project to another |
