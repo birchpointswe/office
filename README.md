@@ -124,7 +124,7 @@ The agents follow a few rules:
 | `voice` | Learns how you write from your sent mail, and drafts in your voice |
 | `board` | Keeps each project's to-do board |
 | `handoff` | Passes work from one project to another |
-| `readout` | The rundown across every project, in one fixed format |
+| `readout` | The rundown in one fixed format: one agent in its project, the whole Office in the Chief of Staff |
 | `reconcile` | Makes one project's board and notes true again, every 3 hours and whenever you ask |
 
 ## Safety

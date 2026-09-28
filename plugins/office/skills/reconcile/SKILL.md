@@ -41,11 +41,12 @@ Every readout shows these.
 
 ## By hand
 
-1. **Inbox.** Handle every note in your inbox.
+1. **Inbox and handoffs.** Handle every note in your inbox. Send any note you told the
+   user you'd send but never did.
 2. **Questions for me.** Ask the saved questions, all in one list. Apply the answers and
    clear the section.
-3. **Finished work.** For each item on the board, check your recent tasks and notes. Ask
-   about the ones that look done, in one list. Move the confirmed ones to the Done section
+3. **Finished work.** For each item on the board, check your recent tasks, your notes
+   and the files the work produced. Ask about the ones that look done, in one list. Move the confirmed ones to the Done section
    of `notes.md` with today's date.
 4. **Work only in chat.** Look through recent tasks for commitments, follow-ups and
    deadlines that never reached the board. List them, and add the ones the user confirms.
