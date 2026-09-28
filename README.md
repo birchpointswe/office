@@ -102,6 +102,7 @@ The projects share one folder:
 | `Office/inbox/<project>/` | notes one project sends another |
 | `Office/<project>/board.md` | the project's to-do board: Now, Next and Waiting |
 | `Office/<project>/notes.md` | the project's memory, with a short status block on top |
+| `Office/<project>/reference.md` | permanent facts, each with the date it was verified. Never groomed |
 | `Office/chief-of-staff/` | the Chief of Staff's own board and notes |
 
 The agents follow a few rules:
@@ -109,6 +110,7 @@ The agents follow a few rules:
 - A project edits only its own board and notes. To ask another project for something, it
   drops a note in that project's inbox.
 - Each to-do lives in one place: one project's board, or your own to-do list.
+- When a question belongs to one project's area, only that project asks you.
 - At the end of every task, the agent updates its board and its status block. The Chief
   of Staff checks this on every scheduled reconcile and flags any project that skipped it.
 

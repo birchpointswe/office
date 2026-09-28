@@ -36,6 +36,7 @@ list.
 
 - One line each: what, in the user's words, plus a due date if there is one.
 - Detail goes in `notes.md` under a heading. The board is only the list.
+- Permanent facts go in `reference.md`, never on the board.
 - When an item is done, delete it and add one line to the Done section of `notes.md`
   with the date. A board shows only what's still open.
 - Update the `Updated:` date whenever you change the board.

@@ -13,7 +13,8 @@ time.
 
 For every agent in `office.md`:
 
-- Its folder has `board.md` and `notes.md`, and `notes.md` opens with a State block.
+- Its folder has `board.md`, `notes.md` and `reference.md`, and `notes.md` opens with a
+  State block.
 - Its board has `## Now`, `## Next` and `## Waiting` headings.
 - Its inbox folder and `done/` folder exist.
 - Its State Updated time is less than a day old. If it's older, its scheduled reconcile

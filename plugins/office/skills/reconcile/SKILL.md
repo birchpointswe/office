@@ -9,12 +9,16 @@ A board drifts: work gets finished and never ticked, new work gets agreed in cha
 written down, and the State block goes stale. Reconcile fixes that for one agent. It runs
 two ways:
 
-- **Scheduled**, at 7am, 10am, 1pm, 4pm and 7pm every day. Nobody is there to answer, so it asks nothing.
+- **Scheduled**, at 7am, 10am, 1pm, 4pm and 7pm every day. Nobody is there to answer,
+  so it asks nothing.
 - **By hand**, when the user says "reconcile". The user is there, so it asks, and it
   clears the questions the scheduled runs saved up.
 
 This agent edits only its own board and notes. Anything that belongs to another agent goes
 there as a handoff note.
+
+Never groom, prune or reorder `reference.md`. If a board item or note is really a
+permanent fact, move it there with the date it was verified.
 
 ## Scheduled run
 

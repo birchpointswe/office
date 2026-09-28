@@ -62,6 +62,7 @@ In this project's folder, create:
     office.md                   the plan from the interview: user, agents, areas, folders
     chief-of-staff/board.md
     chief-of-staff/notes.md     with a State block
+    chief-of-staff/reference.md
     inbox/chief-of-staff/done/
     voice/samples/
 
@@ -99,8 +100,8 @@ Then the project block, in one copyable block:
     2. Schedule five daily tasks, at 7am, 10am, 1pm, 4pm and 7pm, each with the
        prompt "Run the scheduled reconcile." If you can't create them yourself,
        tell me the clicks.
-    3. Create <area>/board.md, <area>/notes.md with a State block, and
-       inbox/<area>/done/.
+    3. Create <area>/board.md, <area>/notes.md with a State block,
+       <area>/reference.md, and inbox/<area>/done/.
     4. Drop a note in inbox/chief-of-staff/ saying you're set up and what you own.
     5. Tell me to go back to the Chief of Staff and say "next".
 

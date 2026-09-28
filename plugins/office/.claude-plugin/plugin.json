@@ -1,7 +1,7 @@
 {
   "name": "office",
   "displayName": "Office",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Turn Cowork into a small staff of agents: one project per area of your work, a shared board, handoffs between projects, and a scheduled reconcile",
   "author": {
     "name": "Birch Point SWE",

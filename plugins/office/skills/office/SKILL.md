@@ -23,7 +23,8 @@ open, edit or move a file.
       inbox/<domain>/done/    notes already handled
       <domain>/board.md       each project's to-do board
       <domain>/notes.md       each project's memory, with a State block on top
-      chief-of-staff/         its board and notes
+      <domain>/reference.md   permanent facts for the project, never groomed
+      chief-of-staff/         its board, notes and reference
 
 Most projects use the Office folder itself as their project folder. An existing project
 that joined later keeps its own folder and has the Office folder added as context.
@@ -40,8 +41,8 @@ Waiting group. Never keep Office work in the built-in list.
 
 ## The rules
 
-- **One writer per file.** You edit only your own `board.md` and `notes.md`. You may read
-  any other project's files. To ask another project for something, drop a note in its
+- **One writer per file.** You edit only your own `board.md`, `notes.md` and
+  `reference.md`. You may read any other project's files. To ask another project for something, drop a note in its
   inbox (handoff skill). Never edit another project's board or notes, even to help.
 - **One owner per item.** Each to-do lives in one place: one project's board, or the
   user's own to-do list. If you find it in two places, keep one and tell the user.
@@ -72,6 +73,25 @@ reconcile and flags any project that skipped it.
 2. Update the State block at the top of `notes.md`, and set its Updated date to today.
 3. If you learned something the next task needs (a decision and why, a contact, a
    preference), add it under a heading in `notes.md`.
+4. If you verified a permanent fact, add or correct it in `reference.md`.
+
+## reference.md
+
+Permanent facts that outlive any task: an account number's last four digits, a vendor's
+billing contact, which breaker feeds the server room. They stay true until the world
+changes, so they don't belong on the board or in the State block.
+
+    # Accounts reference
+
+    - Acme billing contact: Dana Lee, ap@acme.example (verified 2026-09-29)
+    - Beta Corp pays net 30, by ACH only (verified 2026-09-15)
+
+- One fact per line, with the date you verified it.
+- Change a line only when the fact changes, and update its date.
+- Never groom, prune or reconcile it. It has no due dates and no done marks.
+- Never passwords, full account numbers, ID numbers or other secrets.
+- Anything that needs doing goes on the board. Anything about how work went goes in
+  `notes.md`.
 
 ## notes.md
 
