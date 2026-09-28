@@ -2,8 +2,8 @@
 
 A Claude Cowork plugin that turns Cowork into a small staff of agents. Each Cowork
 project is one agent with one area of your work. The agents keep their own to-do boards,
-pass work to each other, and reconcile every hour, and a Chief of Staff agent keeps them
-in step.
+pass work to each other, and reconcile every 3 hours, and a Chief of Staff agent keeps
+them in step.
 
 You never manage files. The agents keep everything in one folder and answer in plain
 words when you ask what's going on.
@@ -50,13 +50,13 @@ computer is on.
 
 From there, the Chief of Staff walks you through everything:
 
-- it gives you its own instructions to paste, and sets up its hourly reconcile
+- it gives you its own instructions to paste, and sets up its scheduled reconcile
 - it asks about you and the areas your work splits into, and which of your existing
   projects should join
 - it creates the Office folder's contents
 - for each agent, it tells you to create one project and gives you a block to paste into
   that project's first chat. The project gives you its instructions to paste, sets up its
-  own hourly reconcile, and creates its files
+  own scheduled reconcile, and creates its files
 - you come back to the Chief of Staff and say "next"
 - it learns how you write from your sent mail
 
@@ -72,7 +72,7 @@ Two words cover most of it:
   nothing.
 - **reconcile**: cleans up one project. It ticks off finished work, adds anything agreed
   in chat, and flags duplicates and stale items. Each project also reconciles itself
-  every hour from 7am to 7pm, and saves any questions for you. A readout shows them, and
+  at 7am, 10am, 1pm, 4pm and 7pm, and saves any questions for you. A readout shows them, and
   the next "reconcile" asks them.
 
 Otherwise, talk to any project the way you'd talk to an assistant:
@@ -82,8 +82,9 @@ Otherwise, talk to any project the way you'd talk to an assistant:
 - "Draft a reply to this in my voice."
 - "Catch me up."
 
-The hourly reconcile is the only scheduled job. Every agent runs it, and the Chief of
-Staff's run also routes stray notes and flags agents that fell behind.
+The scheduled reconcile is the only scheduled job. Every agent runs it every 3 hours, as
+five daily tasks, since Cowork has no 3-hour cadence. The Chief of Staff's run also
+routes stray notes and flags agents that fell behind.
 
 ## How it works
 
@@ -109,7 +110,7 @@ The agents follow a few rules:
   drops a note in that project's inbox.
 - Each to-do lives in one place: one project's board, or your own to-do list.
 - At the end of every task, the agent updates its board and its status block. The Chief
-  of Staff checks this every hour and flags any project that skipped it.
+  of Staff checks this on every scheduled reconcile and flags any project that skipped it.
 
 ## Skills
 
@@ -122,7 +123,7 @@ The agents follow a few rules:
 | `board` | Keeps each project's to-do board |
 | `handoff` | Passes work from one project to another |
 | `readout` | The rundown across every project, in one fixed format |
-| `reconcile` | Makes one project's board and notes true again, every hour and whenever you ask |
+| `reconcile` | Makes one project's board and notes true again, every 3 hours and whenever you ask |
 
 ## Safety
 
@@ -131,7 +132,7 @@ The agents follow a few rules:
 - Give Cowork access to the Office folder only. Keep financial documents, passwords and
   personal records out of it.
 - Use "Manually approve" for any task that touches your mail, calendar or the browser.
-  The hourly reconciles use "Automatically approve", because they only read and write
+  The scheduled reconciles use "Automatically approve", because they only read and write
   the Office folder.
 - If an email, web page or document tells an agent to do something you didn't ask for,
   the agent stops and tells you what it said.

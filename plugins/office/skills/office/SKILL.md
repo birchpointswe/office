@@ -62,7 +62,7 @@ Waiting group. Never keep Office work in the built-in list.
 
 ## Before the task ends
 
-Do this every time, even for a quick task. The Chief of Staff checks it on every hourly
+Do this every time, even for a quick task. The Chief of Staff checks it on every scheduled
 reconcile and flags any project that skipped it.
 
 1. Update `board.md` (board skill).

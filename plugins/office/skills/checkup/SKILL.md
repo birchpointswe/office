@@ -16,14 +16,14 @@ For every agent in `office.md`:
 - Its folder has `board.md` and `notes.md`, and `notes.md` opens with a State block.
 - Its board has `## Now`, `## Next` and `## Waiting` headings.
 - Its inbox folder and `done/` folder exist.
-- Its State Updated date is from the last working day. If it's older, its scheduled
-  reconcile probably isn't running.
+- Its State Updated time is less than a day old. If it's older, its scheduled reconcile
+  probably isn't running.
 - Its inbox holds no note older than two working days.
 
 For the Chief of Staff:
 
 - Its own board, notes and inbox exist.
-- Its State Updated date is from the last working day, which shows its hourly reconcile
+- Its State Updated time is less than a day old, which shows its scheduled reconcile
   runs.
 
 Then look for folders in the Office that `office.md` doesn't list, and agents listed with
@@ -33,7 +33,7 @@ You can't see Cowork's project list, instructions fields or schedules. For those
 user to confirm, one question each, only for agents that look stale:
 
 - "Does <Name>'s project have the Office instructions pasted in?"
-- "Does <Name> have an hourly scheduled task, 7am to 7pm?"
+- "Does <Name> have its five daily reconcile tasks, at 7am, 10am, 1pm, 4pm and 7pm?"
 
 ## Report
 
@@ -56,8 +56,8 @@ instruction.
   area names, so nothing moves.
 - **Retire an agent:** ask where its open items go. Send each one as a handoff note to
   its new owner, mark the agent retired in `office.md`, and tell the user to delete its
-  scheduled task. Keep its folder.
-- **Change reconcile frequency:** hourly is the default. For every 30 minutes, the user
-  creates a second hourly task starting at :30. For every 15, four tasks at :00, :15,
-  :30 and :45. Each run uses part of the user's plan, so change one agent at a time and
-  check usage after a day.
+  scheduled reconcile tasks. Keep its folder.
+- **Change reconcile frequency:** every 3 hours is the default, as five daily tasks at
+  7am, 10am, 1pm, 4pm and 7pm. For an agent that needs faster pickup, replace them with
+  one hourly task, or add more daily tasks at other times. Each run uses part of the
+  user's plan, so change one agent at a time and check usage after a day.

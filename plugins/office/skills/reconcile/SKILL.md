@@ -9,7 +9,7 @@ A board drifts: work gets finished and never ticked, new work gets agreed in cha
 written down, and the State block goes stale. Reconcile fixes that for one agent. It runs
 two ways:
 
-- **Scheduled**, every hour from 7am to 7pm. Nobody is there to answer, so it asks nothing.
+- **Scheduled**, at 7am, 10am, 1pm, 4pm and 7pm every day. Nobody is there to answer, so it asks nothing.
 - **By hand**, when the user says "reconcile". The user is there, so it asks, and it
   clears the questions the scheduled runs saved up.
 
@@ -17,8 +17,6 @@ This agent edits only its own board and notes. Anything that belongs to another 
 there as a handoff note.
 
 ## Scheduled run
-
-If the time is before 7am or after 7pm, stop at once and do nothing.
 
 1. **Inbox.** Handle every note in your inbox, as the handoff skill says. A note that needs
    the user's answer goes under Questions for me.
@@ -70,7 +68,7 @@ then:
 - **Routes** each note in its inbox that nobody placed. It decides which agent owns it,
   adds a line saying why, and moves it into that agent's inbox. If no agent fits, it goes
   under Questions for me.
-- **Checks every agent:** notes whose Updated date is more than two hours old during the
+- **Checks every agent:** notes whose Updated date is more than four hours old during the
   day, inbox notes older than two working days, Waiting items with no name, and items on
   two boards. It sends each agent with problems one handoff note that lists them.
 - **By hand only:** tells the user which agents to open.

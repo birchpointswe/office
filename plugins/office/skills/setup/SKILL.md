@@ -16,8 +16,14 @@ If this chat isn't in a project named Chief of Staff, stop and tell the user: "C
 new Cowork project called Chief of Staff on an empty folder, and paste the onboarding
 block into its first chat."
 
-Every agent's setup starts the same way: its instructions, then its hourly reconcile. The
-Chief of Staff goes first.
+Every agent's setup starts the same way: its instructions, then its scheduled reconcile.
+The Chief of Staff goes first.
+
+The scheduled reconcile runs every 3 hours, at 7am, 10am, 1pm, 4pm and 7pm, every day.
+Cowork has no 3-hour cadence, so it's five daily tasks, one per time, each named
+"Reconcile <time>" with the prompt "Run the scheduled reconcile." Use "Automatically
+approve", since they only read and write the Office folder. It's the only scheduled job
+in the Office, and every agent gets the same five.
 
 ## 1. The Chief of Staff's instructions and schedule
 
@@ -27,12 +33,7 @@ Give the user this block to paste into this project's instructions field:
     skill for everything. You run setup and checkup, route notes nobody placed, and
     flag agents that fall behind.
 
-Then create one scheduled task in this project, or give the clicks: "Scheduled
-reconcile", hourly, 7am to 7pm, with the prompt "Run the scheduled reconcile." It's the
-only scheduled job in the Office, and every agent gets the same one. Use "Automatically
-approve", since it only reads and writes the Office folder. If a schedule can't be
-limited to 7am to 7pm, create it hourly anyway. The reconcile skill stops at once outside
-those hours.
+Then create the five scheduled reconcile tasks in this project, or give the clicks.
 
 Wait until the user confirms both, then start the interview.
 
@@ -95,8 +96,9 @@ Then the project block, in one copyable block:
     Your area: <two lines on what this agent covers and what it doesn't>.
     Set yourself up now:
     1. Give me one block to paste into this project's instructions field.
-    2. Schedule an hourly task, 7am to 7pm, with the prompt "Run the scheduled
-       reconcile." If you can't create it yourself, tell me the clicks.
+    2. Schedule five daily tasks, at 7am, 10am, 1pm, 4pm and 7pm, each with the
+       prompt "Run the scheduled reconcile." If you can't create them yourself,
+       tell me the clicks.
     3. Create <area>/board.md, <area>/notes.md with a State block, and
        inbox/<area>/done/.
     4. Drop a note in inbox/chief-of-staff/ saying you're set up and what you own.
