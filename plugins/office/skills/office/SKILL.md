@@ -24,7 +24,7 @@ open, edit or move a file.
       <domain>/board.md       each project's to-do board
       <domain>/notes.md       each project's memory, with a State block on top
       <domain>/reference.md   permanent facts for the project, never groomed
-      chief-of-staff/         its board, notes and reference
+      chief-of-staff/         its board, notes and reference, and retros/
 
 Most projects use the Office folder itself as their project folder. An existing project
 that joined later keeps its own folder and has the Office folder added as context.
