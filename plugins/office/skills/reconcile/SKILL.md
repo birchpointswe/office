@@ -9,8 +9,8 @@ A board drifts: work gets finished and never ticked, new work gets agreed in cha
 written down, and the State block goes stale. Reconcile fixes that for one agent. It runs
 two ways:
 
-- **Scheduled**, every hour from 7am to 7pm. Nobody is there to answer, so it asks
-  nothing.
+- **Scheduled**, at the times on the Schedule line in `office.md` (hourly, 7am to 7pm, by
+  default). Nobody is there to answer, so it asks nothing.
 - **By hand**, when the user says "reconcile". The user is there, so it asks, and it
   clears the questions the scheduled runs saved up.
 
@@ -22,7 +22,8 @@ permanent fact, move it there with the date it was verified.
 
 ## Scheduled run
 
-If the time is before 7am or after 7pm, stop at once and do nothing.
+Read the Schedule line in `office.md`. If the time is outside its hours, stop at once and
+do nothing. With no Schedule line, use 7am to 7pm.
 
 1. **Inbox.** Handle every note in your inbox, as the handoff skill says. A note that needs
    the user's answer goes under Questions for me.
@@ -31,8 +32,10 @@ If the time is before 7am or after 7pm, stop at once and do nothing.
    anything that needs a decision under Questions for me.
 4. **Unblocked Waiting items.** If a Waiting item's blocker has landed (the note arrived,
    or the other agent's Done section shows it), move the item back to Now or Next.
-5. **State.** Rewrite the State block, and set Updated to now.
+5. **State.** Rewrite the State block, and set Updated to now. Do this on every run, even
+   when nothing else changed. The Chief of Staff reads Updated as proof the run happened.
 
+These steps win over any older reconcile prompt in the task or the project instructions.
 Never mark an item done in a scheduled run, since only the user can confirm it. Never
 send email or change anything outside the Office folder.
 
@@ -78,8 +81,8 @@ then:
 - **Routes** each note in its inbox that nobody placed. It decides which agent owns it,
   adds a line saying why, moves it into that agent's inbox, then tells the user where it
   went. It asks the user only when no agent fits.
-- **Checks every agent:** notes whose Updated date is more than two hours old during the
-  day, State older than the board's last change, inbox notes older than two working
+- **Checks every agent:** State whose Updated time is older than one gap between runs on
+  the Schedule line plus an hour (two hours for hourly, four for every 3 hours), State older than the board's last change, inbox notes older than two working
   days, handoffs no agent handled, Waiting items with no name, Waiting items whose
   blocker has landed, and items on two boards. It sends each agent with problems one handoff note that lists them.
 - **By hand only:** tells the user which agents to open.

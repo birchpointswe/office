@@ -6,7 +6,7 @@ description: Pass work from this project to another project in the Office, or pr
 # Handoffs
 
 Projects can't message each other directly. A handoff is a note file dropped in another
-project's inbox folder. That project handles it on its next hourly reconcile, or sooner
+project's inbox folder. That project handles it on its next scheduled reconcile, or sooner
 if the user opens it.
 
 ## Sending a note

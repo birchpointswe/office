@@ -1,6 +1,6 @@
 ---
 name: checkup
-description: Check that the user's Office is set up properly, and change its setup. Use when the user says "check my office", "checkup", "is everything set up", "reconfigure", or wants to add, split, rename or retire an agent, or change how often reconcile runs. Run in the Chief of Staff. Verifies every agent's files, instructions and schedules, then walks the user through each gap.
+description: Check that the user's Office is set up properly, and change its setup. Use when the user says "check my office", "checkup", "is everything set up", "reconfigure", "I updated Office", or wants to add, split, rename or retire an agent, or change how often reconcile runs. Run in the Chief of Staff. Verifies every agent's files, instructions and schedules, then walks the user through each gap.
 ---
 
 # Checkup
@@ -34,8 +34,30 @@ You can't see Cowork's project list, instructions fields or schedules. For those
 user to confirm, one question each, only for agents that look stale:
 
 - "Does <Name>'s project have the Office instructions pasted in?"
-- "Does <Name> have one hourly reconcile task, 7am to 7pm?" If it still has older
-  reconcile or briefing tasks, the user deletes them.
+- "Does <Name> have its reconcile tasks, as the Schedule line in `office.md` says?" If
+  it still has older reconcile or briefing tasks, the user deletes them.
+
+## After a plugin update
+
+Older versions of Office leave setup behind that the new skills contradict. On the first
+checkup after an update, and whenever the user says "I updated Office":
+
+- **office.md.** If it's missing, write it from the folders and ask the user to confirm
+  it. If it has no Schedule line, ask which reconcile times the agents run, and add one.
+- **Old files.** Look for files the current skills never create, such as `setup/`
+  recipes, task logs, or briefings. List them. Any file that gives agents instructions
+  moves to `archive/` once the user agrees, so no agent follows it again.
+- **Instructions fields.** You can't read other projects' instructions. For each agent,
+  give the user its current instructions block from the setup skill, and ask them to
+  replace the old text. Tell them to remove any line that names a skill the plugin no
+  longer has, such as briefing.
+- **Scheduled tasks.** Ask the user to delete tasks for retired jobs (morning briefing,
+  Friday review) and any reconcile task whose prompt isn't "Run the scheduled
+  reconcile."
+- **Your own instructions.** Compare them with the Chief of Staff block in the setup
+  skill, and give the user the new block if they differ.
+
+Report these under To fix, like any other gap.
 
 ## Report
 

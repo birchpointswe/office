@@ -25,6 +25,14 @@ If not, the reconcile skill stops at once outside those hours. Use "Automaticall
 approve", since it only reads and writes the Office folder. It's the only scheduled job
 in the Office, and every agent gets the same one.
 
+`office.md` records the schedule in one line, which the reconcile skill and the Chief of
+Staff's stale check read:
+
+    Schedule: hourly, 7am to 7pm
+
+If the user picks other times, write those instead, such as `Schedule: daily at 7am,
+10am, 1pm, 4pm and 7pm`.
+
 ## 1. The Chief of Staff's instructions and schedule
 
 Give the user this block to paste into this project's instructions field:
@@ -59,7 +67,8 @@ it's new or an existing project.
 In this project's folder, create:
 
     README.md                   plain words for the user: what this folder is
-    office.md                   the plan from the interview: user, agents, areas, folders
+    office.md                   the plan from the interview: user, agents, areas, folders,
+                                and the Schedule line
     chief-of-staff/board.md
     chief-of-staff/notes.md     with a State block
     chief-of-staff/reference.md
