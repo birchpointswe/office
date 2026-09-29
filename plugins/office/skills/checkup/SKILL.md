@@ -34,7 +34,8 @@ You can't see Cowork's project list, instructions fields or schedules. For those
 user to confirm, one question each, only for agents that look stale:
 
 - "Does <Name>'s project have the Office instructions pasted in?"
-- "Does <Name> have its five daily reconcile tasks, at 7am, 10am, 1pm, 4pm and 7pm?"
+- "Does <Name> have one hourly reconcile task, 7am to 7pm?" If it still has older
+  reconcile or briefing tasks, the user deletes them.
 
 ## Report
 
@@ -58,7 +59,7 @@ instruction.
 - **Retire an agent:** ask where its open items go. Send each one as a handoff note to
   its new owner, mark the agent retired in `office.md`, and tell the user to delete its
   scheduled reconcile tasks. Keep its folder.
-- **Change reconcile frequency:** every 3 hours is the default, as five daily tasks at
-  7am, 10am, 1pm, 4pm and 7pm. For an agent that needs faster pickup, replace them with
-  one hourly task, or add more daily tasks at other times. Each run uses part of the
+- **Change reconcile frequency:** one hourly task is the default. For faster pickup, add
+  a second hourly task starting at :30. For slower, replace it with daily tasks at set
+  times. Each run uses part of the
   user's plan, so change one agent at a time and check usage after a day.

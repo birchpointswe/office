@@ -2,8 +2,8 @@
 
 A Claude Cowork plugin that turns Cowork into a small staff of agents. Each Cowork
 project is one agent with one area of your work. The agents keep their own to-do boards,
-pass work to each other, and reconcile every 3 hours, and a Chief of Staff agent keeps
-them in step.
+pass work to each other, and reconcile every hour, and a Chief of Staff agent keeps them
+in step.
 
 You never manage files. The agents keep everything in one folder and answer in plain
 words when you ask what's going on.
@@ -72,7 +72,7 @@ Two words cover most of it:
   nothing.
 - **reconcile**: cleans up one project. It ticks off finished work, adds anything agreed
   in chat, and flags duplicates and stale items. Each project also reconciles itself
-  at 7am, 10am, 1pm, 4pm and 7pm, and saves any questions for you. A readout shows them, and
+  every hour from 7am to 7pm, and saves any questions for you. A readout shows them, and
   the next "reconcile" asks them.
 
 Otherwise, talk to any project the way you'd talk to an assistant:
@@ -82,8 +82,8 @@ Otherwise, talk to any project the way you'd talk to an assistant:
 - "Draft a reply to this in my voice."
 - "Catch me up."
 
-The scheduled reconcile is the only scheduled job. Every agent runs it every 3 hours, as
-five daily tasks, since Cowork has no 3-hour cadence. The Chief of Staff's run also
+The scheduled reconcile is the only scheduled job. Every agent has one hourly task for it, 7am to
+7pm. The Chief of Staff's run also
 routes stray notes and flags agents that fell behind.
 
 ## How it works
@@ -126,7 +126,7 @@ The agents follow a few rules:
 | `board` | Keeps each project's to-do board |
 | `handoff` | Passes work from one project to another |
 | `readout` | The rundown in one fixed format: one agent in its project, the whole Office in the Chief of Staff |
-| `reconcile` | Makes one project's board and notes true again, every 3 hours and whenever you ask |
+| `reconcile` | Makes one project's board and notes true again, every hour and whenever you ask |
 
 ## Safety
 
