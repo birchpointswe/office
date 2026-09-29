@@ -25,20 +25,6 @@ words when you ask what's going on.
 
 If the sync fails, check the spelling of `birchpointswe/office` and try again.
 
-### Codex
-
-Codex reads the same skill files. Paste this into Codex in the ChatGPT desktop app:
-
-    Install the Office skills from https://github.com/birchpointswe/office. Clone the
-    repo to a temporary folder, copy every folder under plugins/office/skills/ into
-    ~/.agents/skills/, then delete the temporary folder. Confirm the skills appear
-    under /skills. Where a skill names a Cowork feature, use the ChatGPT app's
-    equivalent: a local project for a Cowork project, AGENTS.md for global
-    instructions, and the app's scheduled tasks for Cowork's. Then run the setup skill.
-
-Codex's scheduled tasks can read the Office folder only while the app is open and the
-computer is on.
-
 ## First run
 
 1. Make an empty folder for your Office, somewhere backed up.
