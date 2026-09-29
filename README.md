@@ -64,6 +64,21 @@ Start with two to four agents. Adding or splitting an agent later works the same
 tell the Chief of Staff "add an agent" or "split <name>", create the project, and paste
 the block. To check everything is set up properly, say "check my office".
 
+### Many agents at once
+
+For advanced users. If you have many projects, an agent that can use your computer can
+do the clicking and pasting for you. Codex has done a full setup this way overnight.
+Finish the Chief of Staff's interview yourself first, so the plan in `office.md` is
+yours. Then give that agent this:
+
+    Set up my Office in the Claude desktop app. Open the Chief of Staff project and
+    follow its setup, one agent at a time: create each project it names, paste each
+    block it gives, approve each scheduled task, and say "next". Stop and ask me before
+    anything that sends mail, deletes files or changes billing.
+
+Watch the first agent go through before you leave it running. Afterwards, say "check my
+office" in the Chief of Staff.
+
 ## Using it
 
 Two words cover most of it:
