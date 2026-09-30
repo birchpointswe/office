@@ -77,6 +77,37 @@ In this project's folder, create:
 
 Write the chief of staff's own board and notes now.
 
+`office.md` follows this template. Every skill reads it, so keep the headings and line
+names exactly:
+
+    # Office
+
+    ## User
+    - Name: Dana Lee
+    - Role: Account executive, Acme Corp
+    - Works mostly with: customers, partners, the sales team
+    - Company data rules: none known
+
+    ## Agents
+    | Name | Area | Folder | Project |
+    |---|---|---|---|
+    | Chief of Staff | none | chief-of-staff/ | Chief of Staff |
+    | Jeff | Vendors | vendors/ | Jeff (Vendors) |
+    | Marketing | Marketing | marketing/ | Marketing |
+
+    ## Settings
+    Schedule: hourly, 7am to 7pm
+    Checks: none
+
+    ## Retired
+    - 2026-10-15: Events, folded into Marketing
+
+- The Folder column is relative to the Office folder. An existing project that keeps its
+  own folder says so in that column.
+- `Checks` lists the Chief of Staff's optional checks: `meetings`, `Slack`, `mail`, or
+  `none`. Ask about them in step 7, once every agent is set up.
+- Add an agent's row when its project checks in, never before.
+
 ## 4. Global instructions
 
 Give the user this text in one block, and tell them where it goes: in the desktop app,
@@ -135,7 +166,12 @@ Run the voice skill to build the user's voice profile, so drafts sound like them
 
 ## 7. Finish
 
-Run a readout, so the user sees every agent in one place. Then run the checkup skill,
+Offer the Chief of Staff's optional checks, one question: "On each scheduled run, should
+I also look at your meetings, Slack or mail, and tell you what needs you?" They need the
+matching connectors. Write the answer on the `Checks:` line in `office.md`. The default is
+none.
+
+Then run a readout, so the user sees every agent in one place. Then run the checkup skill,
 and fix anything it finds.
 
 ## Adding an agent later

@@ -122,7 +122,9 @@ The agents follow a few rules:
   personal records out of it.
 - Use "Manually approve" for any task that touches your mail, calendar or the browser.
   The scheduled reconciles use "Automatically approve", because they only read and write
-  the Office folder.
+  the Office folder. The one exception is the Chief of Staff's optional checks of your
+  meetings, Slack or mail, which are off unless you turn them on. They only read, and
+  never reply, accept or archive anything.
 - If an email, web page or document tells an agent to do something you didn't ask for,
   the agent stops and tells you what it said.
 - Check your employer's rules on AI tools before you put company data in the Office.
