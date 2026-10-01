@@ -29,8 +29,9 @@ If the sync fails, check the spelling of `birchpointswe/office` and try again.
 ## First run
 
 1. Make an empty folder for your Office, somewhere backed up.
-2. Create a project called **Chief of Staff**. Choose "Use an existing folder" and pick
-   that folder.
+2. Create a project, and type only its name: **Chief of Staff**. Leave the description
+   empty. In the new project, click Add context on the right, then Link a local folder,
+   and pick that folder.
 3. Set the chat's approval mode to Automatically approve. Setup only writes the Office
    folder.
 4. Type `/office:setup` in its first chat and send it. If your app doesn't show the

@@ -54,7 +54,7 @@ such as `Schedule: daily at 7am, 10am, 1pm, 4pm and 7pm`.
 
 ## 1. The Chief of Staff's instructions and schedule
 
-Give the user this block to paste into this project's instructions field:
+Give the user this block to paste with Add instructions, on the right of this project:
 
     You're my Chief of Staff. The Office folder is this project's folder. Use the office
     skill for everything. You run setup and checkup, route notes nobody placed, and
@@ -178,14 +178,15 @@ For each line under Planned, in order:
 
 **A new project.** Tell the user:
 
-    Create a project called "<Name> (<Area>)" with "Use an existing folder", and pick
-    the Office folder: <path>. Paste this into its Instructions, in the create form if
-    it has an Instructions field. Otherwise open the project, find its Instructions and
-    paste it there. If you can't find them, describe the screen to me:
+    Create a project and type only its name, "<Name> (<Area>)". Leave the description
+    empty: it isn't the instructions. In the new project, on the right:
+    - Click Add instructions and paste this:
 
-    <the agent's instructions block, filled in>
+      <the agent's instructions block, filled in>
 
-    In its first chat, set approval to Automatically approve, then paste this:
+    - Click Add context, then Link a local folder, and pick the Office folder: <path>.
+
+    Then in its first chat, set approval to Automatically approve, and paste this:
 
 Then the project block, in one copyable block:
 
@@ -194,7 +195,7 @@ Then the project block, in one copyable block:
     Your area: <two lines on what this agent covers and what it doesn't>.
     Set yourself up now:
     1. If your instructions don't already name you as <Name>, give me this block to
-       paste into this project's instructions field:
+       paste with Add instructions, on the right of this project:
        <the agent's instructions block, filled in>
     2. Propose one scheduled task named "Scheduled reconcile": hourly, approval mode
        "Automatically approve", prompt: "Run the scheduled reconcile for <Name> (<Area>)
@@ -210,12 +211,14 @@ Then the project block, in one copyable block:
 **An existing project.** The project keeps its own folder, so it needs the Office folder
 added as context. Tell the user:
 
-    Open your "<existing name>" project, add the Office folder (<path>) under its
-    Context, and rename it "<Name> (<Area>)" if you like. Add this to its Instructions:
+    Open your "<existing name>" project, and rename it "<Name> (<Area>)" if you like.
+    On the right:
+    - Click Add context, then Link a local folder, and pick the Office folder: <path>.
+    - Click Add instructions (or edit them) and add this:
 
-    <the agent's instructions block, filled in>
+      <the agent's instructions block, filled in>
 
-    In a new chat, set approval to Automatically approve, then paste this:
+    Then in a new chat, set approval to Automatically approve, and paste this:
 
 Then the same block, with these changes: "The Office folder is at <path>" in place of
 "this project's folder", step 3 starts "Inside the Office folder at <path>, create", and
