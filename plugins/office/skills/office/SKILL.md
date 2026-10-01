@@ -17,6 +17,7 @@ open, edit or move a file.
 
     Office/
       README.md               a plain-words note for the user, written at setup
+      CLAUDE.md               Office-wide instructions, written at setup
       office.md               the plan: the user, each agent, its folder, the settings
       voice/                  samples of the user's writing and their voice profile
       inbox/<folder>/         notes addressed to each agent

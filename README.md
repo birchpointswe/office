@@ -31,21 +31,23 @@ If the sync fails, check the spelling of `birchpointswe/office` and try again.
 1. Make an empty folder for your Office, somewhere backed up.
 2. Create a project called **Chief of Staff**. Choose "Use an existing folder" and pick
    that folder.
-3. Paste this into its first chat:
+3. Set the chat's approval mode to Automatically approve. Setup only writes the Office
+   folder.
+4. Type `/office:setup` in its first chat and send it. If your app doesn't show the
+   command, paste this instead:
 
        You're my Chief of Staff. Run the office setup skill.
 
-   If nothing happens, type `/office:setup` instead.
-
 From there, the Chief of Staff walks you through everything:
 
-- it gives you its own instructions to paste, and sets up its scheduled reconcile
+- it gives you its own instructions to paste, and proposes its scheduled reconcile for
+  you to approve
 - it asks about you and the areas your work splits into, and which of your existing
   projects should join
 - it creates the Office folder's contents
-- for each agent, it tells you to create one project and gives you a block to paste into
-  that project's first chat. The project gives you its instructions to paste, sets up its
-  own scheduled reconcile, and creates its files
+- for each agent, it tells you to create one project, with its instructions to paste, and
+  gives you a block to paste into that project's first chat. The project proposes its
+  scheduled reconcile and creates its files
 - you come back to the Chief of Staff and say "next"
 - it learns how you write from your sent mail, now or at your next session
 

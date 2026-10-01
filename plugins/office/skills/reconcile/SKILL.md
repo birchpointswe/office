@@ -28,7 +28,9 @@ probably closed, and the next run catches up.
 Read the Schedule and Time zone lines in `office.md`. Work out the current time in that
 time zone before you compare. If the time is outside the Schedule hours, stop at once and
 write nothing. 7am to 7pm means the 7:00 run through the 7:00pm run. With no Schedule
-line, use 7am to 7pm. Write every Updated stamp in that time zone.
+line, use 7am to 7pm. With no Time zone line, use the time zone your clock reports, and
+add one line under Questions for me asking for the user's. Write every Updated stamp in
+that time zone.
 
 1. **Inbox.** Handle every note in your inbox, as the handoff skill says. A note that needs
    the user's answer goes under Questions for me.
@@ -82,15 +84,17 @@ Finish with a short summary in chat:
 
 ## In the Chief of Staff
 
-The Chief of Staff can't edit other agents. By hand or scheduled, it runs its own steps,
-then:
+The Chief of Staff can't edit other agents. By hand or scheduled, it handles its inbox
+first, in this order: check-in notes, then notes nobody placed, then the rest as the
+handoff skill says. Then it runs its own steps 2 to 5, then:
 
+- **Check-in notes.** A note that says a new agent is set up: if its board and notes
+  exist, move its line from Planned to the Agents table in `office.md`, using the name,
+  area, folder and project in the note, then move the note to `done/`. If they don't,
+  leave the note where it is.
 - **Routes** each note in its inbox that nobody placed. It decides which agent owns it,
   adds a line saying why, moves it into that agent's inbox, then tells the user where it
   went. It asks the user only when no agent fits.
-- **Check-in notes.** A note that says a new agent is set up: if its board and notes
-  exist, add its row to `office.md`, then move the note to `done/`. If they don't, leave
-  the note where it is.
 - **Checks every agent:** State whose Updated time is older than one gap between runs on
   the Schedule line plus an hour (two hours for hourly, four for every 3 hours). Skip
   this one check on the first run of the day, because the overnight gap always exceeds
@@ -98,6 +102,8 @@ then:
   days, handoffs no agent handled, Waiting items with no name, Waiting items whose
   blocker has landed, and items on two boards. It sends each agent with problems one
   handoff note that lists them, and sends any one agent a stale note at most once a day.
+  Before you send one, look in that agent's inbox and `done/` for a stale note from you
+  dated today.
 - **Optional checks,** only those on the `Checks:` line in `office.md`:
   - `meetings`: today's and tomorrow's calendar. Keep one line per meeting under a
     `## Meetings` heading in your `notes.md`: who it's with, which agent's area it

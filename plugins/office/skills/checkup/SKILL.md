@@ -28,7 +28,8 @@ For the Chief of Staff:
   runs.
 
 Then look for folders in the Office that `office.md` doesn't list, and agents listed with
-no folder.
+no folder. A line under Planned is an agent still being set up: check that it was handed
+out, and skip the other checks for it.
 
 You can't see Cowork's project list, instructions fields or schedules. For those, ask the
 user to confirm, one question each, only for agents that look stale:
