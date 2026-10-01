@@ -18,7 +18,7 @@ agent involved:
 
 - the Done and Questions for me sections of `notes.md`, and the topic notes
 - `board.md`, especially items that sat in Waiting or Now for a long time
-- `inbox/<area>/done/`, for handoffs that bounced or took days
+- `inbox/<folder>/done/`, for handoffs that bounced or took days
 - `reference.md`, for facts that turned out wrong
 
 Ask the user one question: "What was annoying or went wrong, in your own words?" Their
@@ -37,7 +37,8 @@ what went right because of how the Office works, so the fixes don't break it.
 
 ## Check the last retro
 
-Open `chief-of-staff/retros/` and read the latest one. For each change it listed, check
+If `chief-of-staff/retros/` doesn't exist, this is the first retro: create it and skip
+this section. Otherwise open it and read the latest one. For each change it listed, check
 the file it names. Say which changes landed and which didn't, and whether each missed one
 is still needed. A change that didn't land goes back on the list.
 

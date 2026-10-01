@@ -5,14 +5,15 @@ description: Keep this project's to-do board in the Office. Use when the user ad
 
 # The board
 
-Each project has one board at `Office/<domain>/board.md`. Only this project edits it.
+Each agent has one board at `Office/<folder>/board.md`, using its Folder in `office.md`.
+Only this agent edits it.
 
 The board is always this file. It isn't your built-in to-do list, which has no Waiting
 group. Read and edit `board.md` directly, and never move Office work into the built-in
 list.
 
     # Accounts board
-    Updated: 2026-09-29
+    Updated: 2026-09-29 14:05 ET
 
     ## Now
     - Renewal deck for Acme (due Oct 3)
@@ -39,7 +40,7 @@ list.
 - Permanent facts go in `reference.md`, never on the board.
 - When an item is done, delete it and add one line to the Done section of `notes.md`
   with the date. A board shows only what's still open.
-- Update the `Updated:` date whenever you change the board.
+- Update the `Updated:` stamp (date and time) whenever you change the board.
 
 ## Showing the board
 

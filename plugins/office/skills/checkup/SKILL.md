@@ -11,7 +11,7 @@ time.
 
 ## Check
 
-For every agent in `office.md`:
+For every agent in `office.md`, using its Folder column:
 
 - Its folder has `board.md`, `notes.md` and `reference.md`, and `notes.md` opens with a
   State block.
@@ -34,8 +34,9 @@ You can't see Cowork's project list, instructions fields or schedules. For those
 user to confirm, one question each, only for agents that look stale:
 
 - "Does <Name>'s project have the Office instructions pasted in?"
-- "Does <Name> have its reconcile tasks, as the Schedule line in `office.md` says?" If
-  it still has older reconcile or briefing tasks, the user deletes them.
+- "Does <Name> have its scheduled reconcile, as the Schedule line in `office.md` says?"
+  If it still has briefing tasks, or a reconcile task whose prompt doesn't start with
+  "Run the scheduled reconcile", the user deletes them.
 
 ## After a plugin update
 
@@ -43,17 +44,22 @@ Older versions of Office leave setup behind that the new skills contradict. On t
 checkup after an update, and whenever the user says "I updated Office":
 
 - **office.md.** If it's missing, write it from the folders and ask the user to confirm
-  it. If it has no Schedule line, ask which reconcile times the agents run, and add one.
+  it. If it lacks the template's headings (User, the Agents table, Settings, Rules,
+  Retired), rewrite it to the template in the setup skill, keep every fact, and ask the
+  user to confirm. If it has no Schedule line, ask which reconcile times the agents run,
+  and add one. If it has no Time zone line, ask for the user's time zone and add one. If
+  it has no Checks line, add `Checks: none`.
 - **Old files.** Look for files the current skills never create, such as `setup/`
   recipes, task logs, or briefings. List them. Any file that gives agents instructions
   moves to `archive/` once the user agrees, so no agent follows it again.
 - **Instructions fields.** You can't read other projects' instructions. For each agent,
-  give the user its current instructions block from the setup skill, and ask them to
-  replace the old text. Tell them to remove any line that names a skill the plugin no
-  longer has, such as briefing.
+  fill in the agent instructions block from the setup skill's step 5 with its row in
+  `office.md`, give it to the user, and ask them to replace the old text. Tell them to
+  remove any line that names a skill the plugin no longer has, such as briefing.
 - **Scheduled tasks.** Ask the user to delete tasks for retired jobs (morning briefing,
-  Friday review) and any reconcile task whose prompt isn't "Run the scheduled
-  reconcile."
+  Friday review) and any reconcile task whose prompt doesn't start with "Run the
+  scheduled reconcile". Then propose each missing task with the prompt from the setup
+  skill.
 - **Your own instructions.** Compare them with the Chief of Staff block in the setup
   skill, and give the user the new block if they differ.
 
@@ -76,12 +82,12 @@ instruction.
 - **Add an agent:** the setup skill's "Adding an agent later".
 - **Split an agent:** the setup skill's "Splitting an agent".
 - **Rename an agent:** the user renames the project in the sidebar. Update the name in
-  `office.md`, and send the agent a note so it updates its own notes. Folders keep their
-  area names, so nothing moves.
+  `office.md`, and send the agent a note so it updates its own notes. Its folder keeps
+  its name, so nothing moves.
 - **Retire an agent:** ask where its open items go. Send each one as a handoff note to
   its new owner, mark the agent retired in `office.md`, and tell the user to delete its
-  scheduled reconcile tasks. Keep its folder.
+  scheduled reconcile task. Keep its folder.
 - **Change reconcile frequency:** one hourly task is the default. For faster pickup, add
   a second hourly task starting at :30. For slower, replace it with daily tasks at set
-  times. Each run uses part of the
-  user's plan, so change one agent at a time and check usage after a day.
+  times. Update the Schedule line to match. Each run uses part of the user's plan, so
+  change one agent at a time and check usage after a day.

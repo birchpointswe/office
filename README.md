@@ -2,8 +2,8 @@
 
 A Claude Cowork plugin that turns Cowork into a small staff of agents. Each Cowork
 project is one agent with one area of your work. The agents keep their own to-do boards,
-pass work to each other, and reconcile every hour, and a Chief of Staff agent keeps them
-in step.
+pass work to each other, and reconcile every hour during the day, and a Chief of Staff
+agent keeps them in step.
 
 You never manage files. The agents keep everything in one folder and answer in plain
 words when you ask what's going on.
@@ -18,21 +18,24 @@ words when you ask what's going on.
 
 ## Install
 
-1. In the Claude desktop app, switch to the Cowork tab.
-2. Open Customize, then Plugins, then Add, then Add marketplace.
-3. Choose Add from a repository, enter `birchpointswe/office`, and sync.
-4. Open the Discover tab, find Office, and click Add.
+1. In the Claude desktop app, open Customize in the sidebar, then Plugins. On older
+   versions, switch to the Cowork tab first.
+2. Click Add, then Add marketplace, then Add from a repository. Enter
+   `birchpointswe/office` and sync.
+3. Open the Discover tab, find Office, and click Install (or Add).
 
 If the sync fails, check the spelling of `birchpointswe/office` and try again.
 
 ## First run
 
 1. Make an empty folder for your Office, somewhere backed up.
-2. In Cowork, create a project called **Chief of Staff**. Choose "Use an existing folder"
-   and pick that folder.
+2. Create a project called **Chief of Staff**. Choose "Use an existing folder" and pick
+   that folder.
 3. Paste this into its first chat:
 
        You're my Chief of Staff. Run the office setup skill.
+
+   If nothing happens, type `/office:setup` instead.
 
 From there, the Chief of Staff walks you through everything:
 
@@ -44,7 +47,7 @@ From there, the Chief of Staff walks you through everything:
   that project's first chat. The project gives you its instructions to paste, sets up its
   own scheduled reconcile, and creates its files
 - you come back to the Chief of Staff and say "next"
-- it learns how you write from your sent mail
+- it learns how you write from your sent mail, now or at your next session
 
 Start with two to four agents. Adding or splitting an agent later works the same way:
 tell the Chief of Staff "add an agent" or "split <name>", create the project, and paste
@@ -58,7 +61,7 @@ Two words cover most of it:
   nothing.
 - **reconcile**: cleans up one project. It ticks off finished work, adds anything agreed
   in chat, and flags duplicates and stale items. Each project also reconciles itself
-  every hour from 7am to 7pm, and saves any questions for you. A readout shows them, and
+  every hour during the day, and saves any questions for you. A readout shows them, and
   the next "reconcile" asks them.
 
 Otherwise, talk to any project the way you'd talk to an assistant:
@@ -68,37 +71,40 @@ Otherwise, talk to any project the way you'd talk to an assistant:
 - "Draft a reply to this in my voice."
 - "Catch me up."
 
-The scheduled reconcile is the only scheduled job. Every agent has one hourly task for it, 7am to
-7pm. The Chief of Staff's run also
-routes stray notes and flags agents that fell behind.
+The scheduled reconcile is the only scheduled job. Every agent has one hourly task for
+it. Runs outside 7am to 7pm stop at once. The Chief of Staff's run also routes stray notes
+and flags agents that fell behind.
+
+Scheduled runs need the Claude desktop app open, because they reach the Office folder
+through it. A run that finds the app closed does nothing, and the next one catches up.
 
 ## How it works
 
-Each project is one agent with one domain, such as Accounts, Prospecting or Admin. You
-can give agents names, like Jeff for Vendors. A project keeps its own instructions and
-memory, so it remembers its area between tasks.
+Each project is one agent with one area, such as Accounts, Prospecting or Admin. You can
+give agents names, like Jeff for Vendors. A project keeps its own instructions and memory,
+so it remembers its area between tasks.
 
 The projects share one folder:
 
 | Path | Holds |
 |---|---|
 | `Office/README.md` | a plain-words note about the folder, for you |
-| `Office/office.md` | the plan: you, each agent, its name and area |
+| `Office/office.md` | the plan: you, each agent, its name, area and folder, and the settings |
 | `Office/voice/` | samples of your writing, and your voice profile |
-| `Office/inbox/<project>/` | notes one project sends another |
-| `Office/<project>/board.md` | the project's to-do board: Now, Next and Waiting |
-| `Office/<project>/notes.md` | the project's memory, with a short status block on top |
-| `Office/<project>/reference.md` | permanent facts, each with the date it was verified. Never groomed |
+| `Office/inbox/<area>/` | notes one agent sends another |
+| `Office/<area>/board.md` | the agent's to-do board: Now, Next and Waiting |
+| `Office/<area>/notes.md` | the agent's memory, with a short status block on top |
+| `Office/<area>/reference.md` | permanent facts, each with the date it was verified. Never groomed |
 | `Office/chief-of-staff/` | the Chief of Staff's own board and notes |
 
 The agents follow a few rules:
 
-- A project edits only its own board and notes. To ask another project for something, it
-  drops a note in that project's inbox.
-- Each to-do lives in one place: one project's board, or your own to-do list.
-- When a question belongs to one project's area, only that project asks you.
+- An agent edits only its own board and notes. To ask another agent for something, it
+  drops a note in that agent's inbox.
+- Each to-do lives in one place: one agent's board, or your own to-do list.
+- When a question belongs to one agent's area, only that agent asks you.
 - At the end of every task, the agent updates its board and its status block. The Chief
-  of Staff checks this on every scheduled reconcile and flags any project that skipped it.
+  of Staff checks this on every scheduled reconcile and flags any agent that skipped it.
 
 ## Skills
 
@@ -109,10 +115,10 @@ The agents follow a few rules:
 | `checkup` | Checks the whole setup and fixes gaps. Also adds, renames or retires agents |
 | `retro` | Run in the Chief of Staff after a big project or a rough week: finds what went wrong and why, and turns each lesson into a lasting change |
 | `voice` | Learns how you write from your sent mail, and drafts in your voice |
-| `board` | Keeps each project's to-do board |
-| `handoff` | Passes work from one project to another |
+| `board` | Keeps each agent's to-do board |
+| `handoff` | Passes work from one agent to another |
 | `readout` | The rundown in one fixed format: one agent in its project, the whole Office in the Chief of Staff |
-| `reconcile` | Makes one project's board and notes true again, every hour and whenever you ask |
+| `reconcile` | Makes one agent's board and notes true again, every hour during the day and whenever you ask |
 
 ## Safety
 
@@ -128,6 +134,11 @@ The agents follow a few rules:
 - If an email, web page or document tells an agent to do something you didn't ask for,
   the agent stops and tells you what it said.
 - Check your employer's rules on AI tools before you put company data in the Office.
+
+## Updating it
+
+Open Customize, then Plugins, then the birchpointswe marketplace, and click Check for
+updates. Then tell the Chief of Staff "I updated Office".
 
 ## Removing it
 

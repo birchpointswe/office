@@ -1,6 +1,6 @@
 ---
 name: handoff
-description: Pass work from this project to another project in the Office, or process notes other projects sent here. Use when the user says "tell <project> to...", "hand this to...", "send this to...", when work turns up that belongs to another domain, and at the start of every task to read this project's inbox.
+description: Pass work from this project to another project in the Office, or process notes other projects sent here. Use when the user says "tell <project> to...", "hand this to...", "send this to...", when work turns up that belongs to another area, and at the start of every task to read this project's inbox.
 ---
 
 # Handoffs
@@ -11,7 +11,8 @@ if the user opens it.
 
 ## Sending a note
 
-Write one file per handoff at `Office/inbox/<their domain>/<date>-<short-title>.md`:
+Look up their folder in the Agents table of `office.md`. Write one file per handoff at
+`Office/inbox/<their folder>/<date>-<short-title>.md`:
 
     To: Prospecting
     From: Accounts
@@ -22,7 +23,8 @@ Write one file per handoff at `Office/inbox/<their domain>/<date>-<short-title>.
     Acme thread from that day. She's new, so keep it short.
 
 - Write it for a reader who knows nothing about your conversation. They won't see it.
-- One request per note. Two requests are two notes.
+- One request per note. Two requests are two notes. The Chief of Staff's list of an
+  agent's problems is the one exception.
 - Name the date anything is due, and where to find the detail.
 - Then tell the user: "I've passed that to Prospecting."
 
@@ -31,13 +33,13 @@ the Chief of Staff routes it.
 
 ## Receiving a note
 
-At the start of every task, read every file in `Office/inbox/<your domain>/`:
+At the start of every task, read every file in `Office/inbox/<your folder>/`:
 
 1. Do it now, or add it to your board.
 2. Add a line at the bottom: `Outcome: <what you did>, <date>`.
-3. Move the file to `inbox/<your domain>/done/`.
+3. Move the file to `inbox/<your folder>/done/`.
 
-If a note asks for something outside your domain or you can't do it, add the reason as
+If a note asks for something outside your area or you can't do it, add the reason as
 the Outcome and send it on to the Chief of Staff.
 
 ## Never

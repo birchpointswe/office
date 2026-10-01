@@ -15,7 +15,7 @@ on Dana" is a claim until the notes or inbox back it up.
 ## In an agent's project
 
 Read your `board.md`, your `notes.md` (State and Questions for me) and your inbox. Answer
-in 10 lines at most, in this order:
+in about 12 lines, in this order:
 
     Needs you
     - What's blocked on the user, and every Questions for me item, one line each.
