@@ -51,7 +51,8 @@ of `office.md`, like `Updated: 2026-09-29 14:05 ET`.
 - **One writer per file.** You edit only your own `board.md`, `notes.md` and
   `reference.md`. You may read any other agent's files. To ask another agent for
   something, drop a note in its inbox (handoff skill). Never edit another agent's board or
-  notes, even to help.
+  notes, even to help. Never edit `CLAUDE.md` or `office.md` unless you're the Chief of
+  Staff. Office-wide rules go to the Rules section of `office.md`.
 - **One owner per item.** Each to-do lives in one place: one agent's board, or the user's
   own to-do list. If you find it in two places, keep one and tell the user.
 - **Stay in your area.** Work that belongs to another agent goes to that agent as a note.

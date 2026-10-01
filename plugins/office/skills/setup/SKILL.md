@@ -12,9 +12,8 @@ Staff, and goes into another project only to create it and paste one block.
 You can create folders and files, but you can't create Cowork projects or scheduled tasks,
 or change the user's settings. For those, give one short instruction and wait.
 
-Before step 1, ask the user to set this chat to "Automatically approve" for the rest of
-setup, since setup only writes the Office folder. Otherwise every file you create asks for
-a click.
+Before step 1, remind the user in one line to keep this chat on "Automatically approve"
+for setup, since it only writes the Office folder. Don't wait for an answer.
 
 `<path>` in every block below is the Office folder as the user describes it, such as
 "Office, in my OneDrive", from the `Office folder:` line of `office.md`. Never write a
@@ -22,9 +21,11 @@ sandbox path such as `/sessions/...` or `/home/claude/...` into a block or a pro
 folder's name is enough when the user doesn't know the full path.
 
 If the user's message doesn't make you the Chief of Staff, and your project instructions
-don't either, and the user didn't type /office:setup in a project with an empty folder,
-stop and tell the user: "Create a new Cowork project called Chief of Staff on an empty
-folder, and type /office:setup in its first chat."
+don't either: an empty folder, or `/office:setup`, means a new Chief of Staff, so carry
+on. An `office.md` in this project's folder, with no instructions naming you as another
+agent, means you're the Chief of Staff and its block isn't pasted yet: carry on, and ask
+for the paste in step 7. Otherwise stop and tell the user: "Create a new Cowork project
+called Chief of Staff on an empty folder, and type /office:setup in its first chat."
 
 Every agent's setup starts the same way: its instructions, then its scheduled reconcile.
 The Chief of Staff goes first.
@@ -43,7 +44,9 @@ line. Use "Automatically approve", since the run only reads and writes the Offic
 It's the only scheduled job in the Office, and every agent gets one.
 
 You can only propose a scheduled task: its name, schedule, approval mode and prompt. The
-user clicks Schedule. Move on. Checkup asks about any task that looks missing.
+user clicks Schedule. Move on. Checkup asks about any task that looks missing. If this
+chat can't propose a task, tell the user: open Scheduled tasks, click New task, then
+Create with Claude, and paste the prompt.
 
 `office.md` records the schedule on its Schedule line, which the reconcile skill and the
 Chief of Staff's stale check read. If the user picks other times, write those instead,
@@ -62,8 +65,8 @@ reconcile for the Chief of Staff in my Office. The Office folder is this project
 Use the Office plugin's office and reconcile skills." Until step 3 writes `office.md`, its
 runs stop without writing anything.
 
-Then start the interview at once. The user pastes and clicks while you ask. Before the
-readout in step 7, ask once whether both are done.
+Then start the interview at once. The user pastes and clicks while you ask. Step 7 checks
+that both are done.
 
 ## 2. Interview
 
@@ -146,6 +149,8 @@ names exactly:
   the start of every task.
 - Add the Chief of Staff's row now. Add every other agent's row when its project checks
   in, never before.
+- At step 3 the Agents table holds only the Chief of Staff, Planned holds every other
+  agent, and Retired is empty. Jeff, Marketing and Events above are examples.
 
 ## 4. Office-wide instructions
 
@@ -175,7 +180,8 @@ For each line under Planned, in order:
 
     Create a project called "<Name> (<Area>)" with "Use an existing folder", and pick
     the Office folder: <path>. Paste this into its Instructions, in the create form if
-    it has an Instructions field, otherwise in the project's settings:
+    it has an Instructions field. Otherwise open the project, find its Instructions and
+    paste it there. If you can't find them, describe the screen to me:
 
     <the agent's instructions block, filled in>
 
@@ -209,7 +215,7 @@ added as context. Tell the user:
 
     <the agent's instructions block, filled in>
 
-    Then paste this into a new chat in it:
+    In a new chat, set approval to Automatically approve, then paste this:
 
 Then the same block, with these changes: "The Office folder is at <path>" in place of
 "this project's folder", step 3 starts "Inside the Office folder at <path>, create", and
@@ -223,10 +229,16 @@ what's missing and help the user finish it.
 
 ## 6. Voice
 
-Offer to build the voice profile now or at the next session. When the user says now, run
-the voice skill, so drafts sound like them.
+Step 7 offers it. If the user wants it now, ask them to switch this chat to Manually
+approve first, since voice reads their mail. Then run the voice skill, so drafts sound
+like them.
 
 ## 7. Finish
+
+Ask these in one message: is the Chief of Staff's instructions block pasted and its task
+scheduled, do they want the voice profile now or next time, and do they want the global
+instructions block for chats outside the Office (most skip it). If they want voice now,
+run step 6 after the readout and checkup below.
 
 Leave `Checks: none` unless the interview mentioned meetings, Slack or mail. If it did,
 ask one question: "On each scheduled run, should I also look at your meetings, Slack or
@@ -234,8 +246,7 @@ mail, and tell you what needs you?" They need the matching connectors. Write the
 the `Checks:` line in `office.md`. The Chief of Staff's scheduled task stays on
 "Automatically approve", since the checks only read.
 
-Offer the global instructions block for chats outside the Office. Most users skip it. If
-they want it: in the desktop app, open Settings and look for Global instructions under
+If they want the global instructions block: in the desktop app, open Settings and look for Global instructions under
 Cowork, or Instructions for Claude under General. If neither is there, ask them to
 describe the screen and find the field with them.
 
