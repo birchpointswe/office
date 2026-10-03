@@ -20,8 +20,7 @@ open, edit or move a file.
       CLAUDE.md               Office-wide instructions, written at setup
       office.md               the plan: the user, each agent, its folder, the settings
       voice/                  samples of the user's writing and their voice profile
-      inbox/<folder>/         notes addressed to each agent
-      inbox/<folder>/done/    notes already handled
+      inbox/<folder>.md       notes waiting for each agent, removed once handled
       <folder>/board.md       each agent's to-do board
       <folder>/notes.md       each agent's memory, with a State block on top
       <folder>/reference.md   permanent facts for the agent, never groomed
@@ -61,15 +60,18 @@ of `office.md`, like `Updated: 2026-09-29 14:05 ET`.
   it to that agent as a note and wait on it. Only the owning agent asks the user, so the
   user never gets the same question from several agents.
 - **Nothing irreversible without the user.** Never send an email, accept or change a
-  meeting, delete a file, or spend money without the user's explicit yes in this task.
+  meeting, or spend money without the user's explicit yes in this task.
   Draft, and let the user send.
+- **Edit, never move or delete.** Office work only adds and edits text in files. Never
+  move, rename or delete a file in the Office, and never ask the user to. Cowork asks the
+  user before every delete.
 - **Plain words to the user.** Say "I've added it to your list" rather than naming files,
   unless the user asks where things are kept.
 
 ## At the start of every task
 
-1. Read `inbox/<your folder>/`. For each note: do it, or add it to your board, then move
-   the note to `inbox/<your folder>/done/` with a one-line Outcome added at the bottom.
+1. Read `inbox/<your folder>.md`. For each note: do it, or add it to your board, log it
+   in the Done section of `notes.md`, then edit it out of the inbox (handoff skill).
 2. Read the Rules section of `office.md` and follow it.
 3. Read your `board.md` and the State block at the top of your `notes.md`.
 4. If anything in the inbox is urgent or blocks the user's request, tell the user first.
@@ -120,12 +122,14 @@ changes, so they don't belong on the board or in the State block.
 
     ## Done
     - 2026-09-28: Pricing sheet for Beta Corp
+    - 2026-09-29 14:05 ET: from Accounts, "Follow up with Acme's new VP": added to board
 
     ## Questions for me
     - 2026-09-29: Is the renewal deck done? It's been in Now for a week.
 
 The scheduled reconcile saves questions under Questions for me, since nobody is there to
-answer. A reconcile by hand asks them and clears the section.
+answer. A reconcile by hand asks them and clears the section. Reconcile keeps the Done
+section to the last 30 days, so `notes.md` never grows without end.
 
 Keep the State block short enough to read in ten seconds. It's the first thing the next
 task reads, and often the only thing.

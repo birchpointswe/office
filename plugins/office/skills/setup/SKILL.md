@@ -43,10 +43,15 @@ manual. Pick hourly. The reconcile skill does nothing outside the hours on the S
 line. Use "Automatically approve", since the run only reads and writes the Office folder.
 It's the only scheduled job in the Office, and every agent gets one.
 
-You can only propose a scheduled task: its name, schedule, approval mode and prompt. The
-user clicks Schedule. Move on. Checkup asks about any task that looks missing. If this
-chat can't propose a task, tell the user: open Scheduled tasks, click New task, then
-Create with Claude, and paste the prompt.
+You can only propose a scheduled task: its name, schedule, approval mode, folder and
+prompt. The user clicks Schedule. If this chat can't propose a task, tell the user: open
+Scheduled tasks, click New task, then Create with Claude, and paste the prompt.
+
+The task needs the Office folder in its own settings. A project's linked folder doesn't
+reach its scheduled tasks, and a run without the folder can't read the Office. Always
+tell the user, in one line: "Open Scheduled tasks, open the Scheduled reconcile task
+itself, edit it, and add the Office folder: <path>. Adding it to one run doesn't carry
+over to the next." Then move on. Checkup asks about any task that looks missing.
 
 `office.md` records the schedule on its Schedule line, which the reconcile skill and the
 Chief of Staff's stale check read. If the user picks other times, write those instead,
@@ -62,8 +67,9 @@ Give the user this block to paste with Add instructions, on the right of this pr
 
 Then propose the Chief of Staff's scheduled reconcile, with the prompt "Run the scheduled
 reconcile for the Chief of Staff in my Office. The Office folder is this project's folder.
-Use the Office plugin's office and reconcile skills." Until step 3 writes `office.md`, its
-runs stop without writing anything.
+Use the Office plugin's office and reconcile skills." Give the line about adding the
+Office folder to the task itself. Until step 3 writes `office.md`, its runs stop without
+writing anything.
 
 Then start the interview at once. The user pastes and clicks while you ask. Step 7 checks
 that both are done.
@@ -97,7 +103,7 @@ In this project's folder, create:
     chief-of-staff/board.md
     chief-of-staff/notes.md     with the State, Done and Questions for me sections
     chief-of-staff/reference.md
-    inbox/chief-of-staff/done/
+    inbox/chief-of-staff.md     with the heading "# Inbox: Chief of Staff"
     voice/samples/
 
 Write the Chief of Staff's own board and notes now.
@@ -127,6 +133,7 @@ names exactly:
     Schedule: hourly, 7am to 7pm
     Time zone: Eastern (New York)
     Checks: none
+    Inbox: one file per agent
 
     ## Rules
     - none yet
@@ -135,7 +142,9 @@ names exactly:
     - 2026-10-15: Events, folded into Marketing
 
 - The Folder column is relative to the Office folder. Every agent's files and inbox use
-  it: `<folder>/board.md` and `inbox/<folder>/`. Never derive a path from a name.
+  it: `<folder>/board.md` and `inbox/<folder>.md`. Never derive a path from a name.
+- `Inbox: one file per agent` marks an Office whose inboxes are single files. Checkup
+  converts an older Office and adds the line.
 - For an existing project that keeps its own folder, add "own folder" after its name in
   the Project column.
 - `Planned` lists the agents from the interview that haven't checked in, one line each:
@@ -171,7 +180,7 @@ them.
 Each agent's instructions follow this block. Fill it in:
 
     You're <Name>, the <Area> agent in my Office. The Office folder is <path>. Your
-    folder in it is <folder>/ and your inbox is inbox/<folder>/. Use the office skill
+    folder in it is <folder>/ and your inbox is inbox/<folder>.md. Use the office skill
     for everything. Your area: <two lines on what you cover and what you don't>.
 
 For each line under Planned, in order:
@@ -198,14 +207,19 @@ Then the project block, in one copyable block:
        paste with Add instructions, on the right of this project:
        <the agent's instructions block, filled in>
     2. Propose one scheduled task named "Scheduled reconcile": hourly, approval mode
-       "Automatically approve", prompt: "Run the scheduled reconcile for <Name> (<Area>)
-       in my Office. The Office folder is <path>. Use the Office plugin's office and
-       reconcile skills." I click Schedule. The form has no time window. The skill stops
-       itself outside the Schedule hours. If you can't propose it, tell me the clicks.
+       "Automatically approve", folder: the Office folder, prompt: "Run the scheduled
+       reconcile for <Name> (<Area>) in my Office. The Office folder is <path>. Use the
+       Office plugin's office and reconcile skills." I click Schedule. The form has no
+       time window. The skill stops itself outside the Schedule hours. If you can't
+       propose it, tell me the clicks. Then remind me to open the task itself under
+       Scheduled tasks and add the Office folder there, since one run's folder doesn't
+       carry over.
     3. Create <folder>/board.md, <folder>/notes.md with the State, Done and Questions
-       for me sections, <folder>/reference.md, and inbox/<folder>/done/.
-    4. Drop a note in inbox/chief-of-staff/ with your name, area, folder and project
-       name, and what you own, so the Chief of Staff can add your row.
+       for me sections, <folder>/reference.md, and inbox/<folder>.md with the heading
+       "# Inbox: <Name>".
+    4. Add a check-in note to the end of inbox/chief-of-staff.md (handoff skill) with
+       your name, area, folder and project name, and what you own, so the Chief of
+       Staff can add your row.
     5. Tell me to go back to the Chief of Staff and say "next".
 
 **An existing project.** The project keeps its own folder, so it needs the Office folder
@@ -224,11 +238,11 @@ Then the same block, with these changes: "The Office folder is at <path>" in pla
 "this project's folder", step 3 starts "Inside the Office folder at <path>, create", and
 step 3 adds "Fill the board and notes from what you already know about this project."
 
-**Then wait.** When the user says "next", read `inbox/chief-of-staff/` and its `done/`
-folder. If the project's check-in note is in either, and its board and notes exist, move
-the note to `done/` if it isn't there yet, move its line from Planned to the Agents table
-in `office.md` if it isn't there yet, and go to the next line under Planned. If not, say
-what's missing and help the user finish it.
+**Then wait.** When the user says "next", read `inbox/chief-of-staff.md` and the Done
+section of your `notes.md`. If the project's check-in note is in either, and its board and
+notes exist, move its line from Planned to the Agents table in `office.md` if it isn't
+there yet, handle the note as the handoff skill says if it's still in the inbox, and go to
+the next line under Planned. If not, say what's missing and help the user finish it.
 
 ## 6. Voice
 

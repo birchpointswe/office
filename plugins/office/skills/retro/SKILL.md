@@ -18,7 +18,8 @@ agent involved:
 
 - the Done and Questions for me sections of `notes.md`, and the topic notes
 - `board.md`, especially items that sat in Waiting or Now for a long time
-- `inbox/<folder>/done/`, for handoffs that bounced or took days
+- the Done lines in `notes.md` that log handled notes, and `inbox/<folder>.md`, for
+  handoffs that bounced or took days
 - `reference.md`, for facts that turned out wrong
 
 Ask the user one question: "What was annoying or went wrong, in your own words?" Their

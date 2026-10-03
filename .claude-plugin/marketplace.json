@@ -10,7 +10,7 @@
       "name": "office",
       "source": "./plugins/office",
       "description": "Turn Cowork into a small staff of agents: one project per area of your work, a shared board, handoffs between projects, and a scheduled reconcile",
-      "version": "0.3.1",
+      "version": "0.3.2",
       "author": {
         "name": "Birch Point SWE"
       },

@@ -81,6 +81,11 @@ and flags agents that fell behind.
 Scheduled runs need the Claude desktop app open, because they reach the Office folder
 through it. A run that finds the app closed does nothing, and the next one catches up.
 
+Each scheduled task needs the Office folder in its own settings. A project's linked
+folder doesn't reach its scheduled tasks. Open Scheduled tasks, open the task itself, edit
+it, and add the Office folder. Adding the folder to one run doesn't carry over to the
+next. The Chief of Staff reminds you during setup.
+
 ## How it works
 
 Each project is one agent with one area, such as Accounts, Prospecting or Admin. You can
@@ -94,7 +99,7 @@ The projects share one folder:
 | `Office/README.md` | a plain-words note about the folder, for you |
 | `Office/office.md` | the plan: you, each agent, its name, area and folder, and the settings |
 | `Office/voice/` | samples of your writing, and your voice profile |
-| `Office/inbox/<area>/` | notes one agent sends another |
+| `Office/inbox/<area>.md` | notes waiting for each agent, removed once handled |
 | `Office/<area>/board.md` | the agent's to-do board: Now, Next and Waiting |
 | `Office/<area>/notes.md` | the agent's memory, with a short status block on top |
 | `Office/<area>/reference.md` | permanent facts, each with the date it was verified. Never groomed |
@@ -106,6 +111,8 @@ The agents follow a few rules:
   drops a note in that agent's inbox.
 - Each to-do lives in one place: one agent's board, or your own to-do list.
 - When a question belongs to one agent's area, only that agent asks you.
+- Agents only add and edit text. They never move or delete files, so they never ask you
+  to clean up after them, and nothing in the folder grows without end.
 - At the end of every task, the agent updates its board and its status block. The Chief
   of Staff checks this on every scheduled reconcile and flags any agent that skipped it.
 

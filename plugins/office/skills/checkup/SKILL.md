@@ -16,14 +16,14 @@ For every agent in `office.md`, using its Folder column:
 - Its folder has `board.md`, `notes.md` and `reference.md`, and `notes.md` opens with a
   State block.
 - Its board has `## Now`, `## Next` and `## Waiting` headings.
-- Its inbox folder and `done/` folder exist.
+- Its inbox file `inbox/<folder>.md` exists.
 - Its State Updated time is less than a day old. If it's older, its scheduled reconcile
-  probably isn't running.
+  probably isn't running, or its task has no Office folder.
 - Its inbox holds no note older than two working days.
 
 For the Chief of Staff:
 
-- Its own board, notes and inbox exist.
+- Its own board, notes and inbox file exist.
 - Its State Updated time is less than a day old, which shows its scheduled reconcile
   runs.
 
@@ -38,6 +38,9 @@ user to confirm, one question each, only for agents that look stale:
 - "Does <Name> have its scheduled reconcile, as the Schedule line in `office.md` says?"
   If it still has briefing tasks, or a reconcile task whose prompt doesn't start with
   "Run the scheduled reconcile", the user deletes them.
+- "Open Scheduled tasks, open <Name>'s Scheduled reconcile task itself, and check it has
+  the Office folder: <path>. If not, edit the task and add it." A folder added to one run
+  doesn't carry over, and a project's linked folder doesn't reach its tasks.
 
 ## After a plugin update
 
@@ -50,9 +53,16 @@ checkup after an update, and whenever the user says "I updated Office":
   user to confirm. If it has no Schedule line, ask which reconcile times the agents run,
   and add one. If it has no Time zone line, ask for the user's time zone and add one. If
   it has no Checks line, add `Checks: none`.
+- **Inboxes.** If `office.md` has no `Inbox: one file per agent` line, the inboxes are
+  folders of note files. For each agent, create `inbox/<folder>.md` with its heading, and
+  copy in every note still waiting in `inbox/<folder>/` (the files outside `done/`), one
+  section each, as the handoff skill lays out. Then add `Inbox: one file per agent` to
+  Settings. Leave the old folders as they are. No skill reads them again, so they never
+  need cleaning up.
 - **Old files.** Look for files the current skills never create, such as `setup/`
-  recipes, task logs, or briefings. List them. Any file that gives agents instructions
-  moves to `archive/` once the user agrees, so no agent follows it again.
+  recipes, task logs, or briefings. List them. Once the user agrees, replace the contents
+  of any file that gives agents instructions with one line: `Retired by checkup on
+  <date>. Ignore this file.` Never move or delete it.
 - **Instructions fields.** You can't read other projects' instructions. For each agent,
   fill in the agent instructions block from the setup skill's step 5 with its row in
   `office.md`, give it to the user, and ask them to replace the old text. Tell them to
@@ -60,7 +70,8 @@ checkup after an update, and whenever the user says "I updated Office":
 - **Scheduled tasks.** Ask the user to delete tasks for retired jobs (morning briefing,
   Friday review) and any reconcile task whose prompt doesn't start with "Run the
   scheduled reconcile". Then propose each missing task with the prompt from the setup
-  skill.
+  skill. Ask the user to check that every reconcile task has the Office folder in the
+  task's own settings.
 - **Your own instructions.** Compare them with the Chief of Staff block in the setup
   skill, and give the user the new block if they differ.
 
